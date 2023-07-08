@@ -1,0 +1,9 @@
+# dependencies , Node artifact files
+/node_modules
+dist/
+
+# production
+/build
+
+# parcel
+.parcel-cache

@@ -1,0 +1,33 @@
+{
+  "name": "learning-react",
+  "version": "1.0.0",
+  "description": "deep dive in React",
+
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kumaratul60/web-dev.git"
+  },
+  "keywords": [
+    "react-dozo"
+  ],
+  "author": "Atul",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kumaratul60/web-dev/issues"
+  },
+  "homepage": "https://github.com/kumaratul60/web-dev#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist":[
+   " last 5 version"
+  ]
+}
