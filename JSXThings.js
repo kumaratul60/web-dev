@@ -66,6 +66,8 @@ const TestFunctionalComponent2 = () => (
 
 // if we use multiple root.render then it don't show any error but it only render last root.render function
 
+
+
 // root.render(jsxHeading);
 // root.render(TestFunctionalComponent2());
-root.render(<TestFunctionalComponent />);
+root.render(<TestFunctionalComponent/>);
