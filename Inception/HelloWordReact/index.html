@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev-React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <!-- adding react CDN files  -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+
+    <script>
+      // like in js  we have document.getElementById similarly in React we have React.createElement function which take 3 arguments.
+      // a. what tag you need/want to create
+      // b. initially a empty object, in this object you can give attributes to your tags. (basically you can add className ot id)
+      // c. what text you want to put inside the created tag.
+
+      //   creating a element is the core thing of react
+      //    React.createElement is a an object at the end
+      const heading = React.createElement("h1", {}, "Hello React");
+
+      //  creating a root and rendering something inside it , this job done by react-dom
+      const rootVar = ReactDOM.createRoot(document.getElementById("root"));
+
+      rootVar.render(heading);
+    </script>
+  </body>
+</html>
