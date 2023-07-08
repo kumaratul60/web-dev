@@ -1,0 +1,220 @@
+# Chapter 03 - Laying the Foundation
+
+## Q: What is `JSX`?
+
+A: JSX stands for JavaScript XML.
+JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement() and/or appendChild() methods.
+
+- JSX ==> React.createElement => Object => HTML(DOM)
+- JSX makes it easier to write and add HTML in React.
+- JSX converts HTML tags into react elements.
+- JSx is html like syntax but not a html
+
+- react and jsx both are different
+- jsx is not a html, jsx different from html. JSX is a HTML-like or XML-like syntax
+- JSX (transpiled before it reaches the JS Engine) - PARCEL - BABEL
+- BABEL- It is transpiler/JS-compiler that convert your JSX to browser can understand.
+
+## How the JSX run under the hood in react?
+
+JSX converted to React.createElement then it makes JS element object then that js element rendered in DOM as HTMLElement
+
+`JSX => Babel transpile it to React.createElement => ReactElement-JS Object =>  HTMLElement(render)`
+
+### Example 1 using JSX:
+
+```
+const myElement = <h1>JSX beast</h1>;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+```
+
+### Example 2 Without JSX:
+
+```
+const myElement = React.createElement('h1', {}, 'I do not use JSX!');
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(myElement);
+```
+
+### Examples jsx
+
+```
+//  for single line jsx
+// const jsxHeading = <h2 id="jsxId">jsx heading</h2>;
+const jsxHeading = <h2 className="jsxId">jsx heading start</h2>;
+
+//  for multiline jsx, because babel want to know where jsx start and  where it is going to end
+const multiJsx = (
+  <>
+    <h1> multiline jsx</h1>
+    <h4>check line</h4>
+    <h2 className="jsxIdM" tabIndex="1">
+      jsx heading
+    </h2>
+    {jsxHeading}
+  </>
+);
+
+```
+
+## Q: Superpowers of `JSX`.
+
+A. JSX is easy to maintain and debug.
+
+# JSX features:
+
+- Readability
+- Batter developer experience
+- Syntactical sugar
+- Less code
+- maintainability
+- No repetition
+- JSX prevents XSS(cross-site scripting) attacks, it sensitizes the code.
+
+```
+jsx expression => (<h1 id="title" key="h2">Namaste Hello</h1>)
+```
+
+### Example
+
+```
+function greeting(user) {
+//JSX
+  return <h1>{user}, How are you!!!</h1>;
+}
+```
+
+## Q: What is React element ?
+
+React element is a normal variable which has some jsx assigned to it. it is an object at the end.
+
+### Example
+
+```
+const heading3 = (
+    <h1 id="title" key="h2">
+        Namaste Hello
+    </h1>
+);
+```
+
+## Q: Do you know `Composing Components`?
+
+Yes, to use react component inside react component is know as `Component composition` or `Composing Components`.
+
+### Example
+
+```
+const Title = () => {
+    return (
+        <h2 id="title" key="h3">
+            Functional Components
+        </h2>
+    );
+};
+
+const HeadingComponent1 = () => {
+    return (
+        <div>
+            <h1>hello1</h1>
+            {/* to use react element inside react component */ }
+            { heading3 }
+
+            {/* Component composition or Composing Components ==> to use react component inside react component is know as Component composition or Composing Components  */ }
+            {/*  recommended way to call a Component */ }
+            <Title />
+
+            {/* similar to component because react component at the end it is a js function this way is not recommended to call a component */ }
+            { Title() }
+
+            <h2>hello2</h2>
+        </div>
+    );
+};
+
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+ root.render(<HeadingComponent1 />);
+//root.render(HeadingComponent1());
+
+```
+
+## Q: Role of `type` attribute in script tag? What options can I use there?
+
+A: The `type` attribute specifies the type of the script. The type attribute identifies the content between the `<script>` and `</script>` tags. It has a Default value which is “text/javascript”.
+
+### `type` attribute can be of the following types:
+
+- `text/javascript` : It is the basic standard of writing javascript code inside the `<script>` tag.
+  ### Syntax
+  ```
+  <script type="text/javascript"></script>
+  ```
+- `text/ecmascript` : this value indicates that the script is following the `EcmaScript` standards.
+- `module`: This value tells the browser that the script is a module that can import or export other files or modules inside it.
+- `text/babel` : This value indicates that the script is a babel type and required bable to transpile it.
+- `text/typescript`: As the name suggest the script is written in `TypeScript`.
+
+## Q: `{TitleComponent}` vs `{<TitleComponent/>}` vs `{<TitleComponent></TitleComponent>}` in `JSX`.
+
+A: The Difference is stated below:
+
+- `{TitleComponent}`: This value describes the `TitleComponent` as a javascript expression or a variable.
+  The `{}` can embed a javascript expression or a variable inside it.
+- `<TitleComponent/>` : This value represents a Component that is basically returning Some JSX value. In simple terms `TitleComponent` a function that is returning a JSX value.
+  A component is written inside the `{<  />}` expression.
+- `<TitleComponent></TitleComponent>` : `<TitleComponent />` and `<TitleComponent></TitleComponent>` are equivalent only when `< TitleComponent />` has no child components. The opening and closing tags are created to include the child components.
+
+### Example
+
+```
+<TitleComponent>
+    <FirstChildComponent />
+    <SecondChildComponent />
+    <ThirdChildComponent />
+</TitleComponent>
+```
+
+### React component
+
+```
+// React Component -> Functional component & Class based component
+// React Functional Component -> It is normal javascript function which return some peace of jsx, make sure function component always start from capital latter.
+
+const fn = () => {
+  return true;
+};
+
+const fn2 = () => true;
+//  Above fn & fn2 are equivalent.
+
+const TestFunctionalComponent = () => {
+  return <h1 className="jsxFunc">React Functional Components1</h1>;
+};
+
+//  this is also perfectly valid function component
+
+//  component composition => composing two component into one component.
+const TestFunctionalComponent2 = () => (
+  <>
+    <>
+      <div className="container">{multiJsx}</div>
+      <div className="container2">
+        {TestFunctionalComponent()}
+        <TestFunctionalComponent />
+        <TestFunctionalComponent></TestFunctionalComponent>
+      </div>
+      <h1 className="jsxFunc">React Functional Component2</h1>
+    </>
+  </>
+);
+
+// if we use multiple root.render then it don't show any error but it only render last root.render function
+
+
+
+// root.render(jsxHeading);
+// root.render(TestFunctionalComponent2());
+root.render(<TestFunctionalComponent/>);
+```
