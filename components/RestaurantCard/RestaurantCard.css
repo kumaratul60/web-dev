@@ -1,0 +1,16 @@
+.res-container {
+  width: 200px;
+  height: 350px;
+  padding: 5px;
+
+}
+.res-container:hover {
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.res-logo {
+  width: 200px;
+  height: 100px;
+}
