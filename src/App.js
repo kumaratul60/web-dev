@@ -6,25 +6,6 @@ import Card from "./components/Card/Card";
 
 import "./App.css";
 
-/***
-* Header
-  - Logo
-  - Nav Items
-  - Cart
-* Body
-  - Search components
-  - card container
-    - img
-    - name of restaurant
-    - price
-    - cuisines
-    - star rating
-    - deliver time
-* Footer
-  -copyright
-  - links
-  - contact info
-*/
 
 const AppLayout = () => {
   return (

@@ -1,118 +1,22 @@
-import RestaurantCard from "../RestaurantCard/RestaurantCard";
-import "./Card.css";
-
-const resObj = {
+export const resObj = {
   data: {
-    type: "F",
     id: "41890",
     name: "Al Jawahar Restaurant (Jama Masjid)",
     uuid: "f9d26830-a7ee-4d59-9b9c-fdb3ccd310d9",
     city: "4",
     area: "NEAR JAMA MASJID",
-    totalRatingsString: "1000+ ratings",
     cloudinaryImageId: "l2hcl3u2g1cdgkz6kdd2",
     cuisines: ["Mughlai", "North Indian"],
-    tags: [],
     costForTwo: 40000,
-    costForTwoString: "₹400 FOR TWO",
     deliveryTime: 48,
     minDeliveryTime: 48,
     maxDeliveryTime: 48,
     slaString: "48 MINS",
     lastMileTravel: 2.4000000953674316,
-    slugs: {
-      restaurant: "al-jawahar-jama-masjid-old-delhi",
-      city: "delhi",
-    },
-    cityState: "4",
-    address: "8-15,JAMA MASJID BAZAR,MATIA MAHAL",
-    locality: "NEAR JAMA MASJID",
-    parentId: 16637,
-    unserviceable: false,
-    veg: false,
-    select: false,
-    favorite: false,
-    tradeCampaignHeaders: [],
-    ribbon: [
-      {
-        type: "PROMOTED",
-      },
-    ],
-    chain: [],
-    feeDetails: {
-      fees: [
-        {
-          name: "special",
-          fee: 2000,
-          message: "",
-        },
-        {
-          name: "distance",
-          fee: 3200,
-          message: "",
-        },
-        {
-          name: "time",
-          fee: 0,
-          message: "",
-        },
-      ],
-      totalFees: 5200,
-      message: "",
-      title: "Delivery Charge",
-      amount: "5200",
-      icon: "",
-    },
-    availability: {
-      opened: true,
-      nextOpenMessage: "",
-      nextCloseMessage: "",
-    },
-    longDistanceEnabled: 0,
-    rainMode: "LIGHT",
-    thirdPartyAddress: false,
-    thirdPartyVendor: "",
-    adTrackingID:
-      "cid=7423483~p=1~eid=00000189-39d6-daca-0b31-c59800cc0174~srvts=1688892529354",
-    badges: {
-      imageBased: [],
-      textBased: [],
-      textExtendedBadges: [],
-    },
-    lastMileTravelString: "2.4 kms",
-    hasSurge: false,
-    sla: {
-      restaurantId: "41890",
-      deliveryTime: 48,
-      minDeliveryTime: 48,
-      maxDeliveryTime: 48,
-      lastMileTravel: 2.4000000953674316,
-      lastMileDistance: 0,
-      serviceability: "SERVICEABLE",
-      rainMode: "LIGHT",
-      longDistance: "NOT_LONG_DISTANCE",
-      preferentialService: false,
-      iconType: "EMPTY",
-    },
-    promoted: true,
-    avgRating: "3.5",
-    totalRatings: 1000,
-    new: false,
-  },
-  subtype: "basic",
-  crouton: {
-    type: "RAIN",
-    metaInfo: {
-      bgColor: "#282C3F",
-      icon: "surge_listing_piuzrv",
-      textColor: "#ffffff",
-      title: "Bad Weather",
-      message: "₹20 extra levied on some restaurants",
-    },
   },
 };
 
-const resList = [
+export const resList = [
   {
     type: "restaurant",
     data: {
@@ -1699,22 +1603,3 @@ const resList = [
     },
   },
 ];
-
-//  not using keys (not acceptable) <<< index as key <<<<<<<< uniques id  (best practice)
-
-const Card = () => {
-  return (
-    <div className="card-body">
-      <div className="search">
-        <input type="text" placeholder = "search..." />
-      </div>
-      <div className="card-container">
-        {/* key is reserve keyword */}
-        {resList.map((restaurant) => (
-          <RestaurantCard key={restaurant.data.id} resData={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-};
-export default Card;

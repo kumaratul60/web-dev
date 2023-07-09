@@ -1,0 +1,16 @@
+.filter-btn{
+    padding:10px;
+    margin-block:5px;
+}
+.filter-btn:hover{
+    cursor: pointer;
+    background: "coral";
+    border-radius: 5px;
+}
+
+
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}

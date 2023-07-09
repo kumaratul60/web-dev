@@ -1,3 +1,4 @@
+import { HEADER_URL } from "../../utils/constants";
 import "./Header.css"
 
 const Header = () => {
@@ -6,7 +7,7 @@ const Header = () => {
       <div className="logo-container">
         <img
           className="logo"
-          src="https://png.pngtree.com/png-vector/20220727/ourmid/pngtree-food-logo-png-image_6089719.png"
+          src={ HEADER_URL }
           alt="logo"
         />
       </div>
