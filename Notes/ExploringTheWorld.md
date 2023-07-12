@@ -1,0 +1,199 @@
+1. What is a Microservice?
+
+Microservices architecture is an approach to application development where a large-scale application is broken down into smaller, autonomous services called microservices. These microservices are self-contained and interact with each other through a network. Each microservice is responsible for a specific function and has its own logic and database. This architectural style promotes separation of concerns and the single responsibility principle. The advantages of microservices include the ability to use multiple technology stacks, independent codebases for each microservice, concurrent development by different teams, and individual deployment of each service.
+
+Advantages of Microservice:
+
+- Multiple technology Stack
+- Each component and microservice module has its own codebase.
+- Different teams can work on the different process at the same time
+- System deployment for each service will be conducted individually
+
+2. What is Monolith architecture?
+
+Monolithic architecture is a traditional software development approach where the entire system is built as a single, self-contained entity. In monolithic architecture, the codebase usually includes various components such as the user interface, backend logic, and database. Making even a small change in the code requires compiling and deploying the entire monolithic application.
+
+3. What is the difference between Monolith and microservice?
+
+1. Monolith architecture is built as one large system with a single codebase, while microservices architecture is composed of small, independent modules based on specific business functionality.
+1. In monolith it is not easy to scale based on demand on the other hand in microservices it is easy.
+1. Monolith has shared database, while in microservices each project has their own database.
+1. Scaling in a monolithic architecture can be challenging, whereas microservices architecture allows for easy scalability.
+
+1. Why do we need a useEffect Hook?
+
+useEffect hook let's you perform side effects in functional components like data fetching (API) manually changing the DOM or setting up a subscription.
+With useEffect hook we can tell react that after every render call the callback function pass as the first parameter to useEffect.
+
+or
+
+The useEffect hook in React allows you to perform side effects in functional components. Side effects include tasks like data fetching from an API, manipulating the DOM, or setting up subscriptions. By using the useEffect hook, you can tell React to run a callback function after every render. The basic syntax of the useEffect hook is:
+
+```
+The useEffect function takes two arguments:
+the first argument is the callback function that will be run, and the second argument is an optional array of dependencies.
+The callback function is where you can write the code that will be executed when the effect is triggered.
+
+
+
+useEffect(() => {
+  // Code for side effects
+}, []);
+
+```
+
+By default, useEffect runs after every render but we can customize it with the second paramter.As the second parameter, the useEffect accepts an array that allows us to tell react when we want our effect to be called.
+If you want to do something after rendering a component the use useEffect hook.
+
+5. What is optional chaining?
+
+Optional chaining is a feature in JavaScript that provides a concise and safe way to access properties of nested objects, even if intermediate properties are null or undefined. Without optional chaining, accessing nested properties would require checking each level for existence using conditional operators. The optional chaining operator ?. simplifies this process by stopping the evaluation and returning undefined if any intermediate property is null or undefined.
+
+`Optional chaining provides a more efficient and concise way to access properties in deep nested structures without throwing errors.`
+
+```
+const person = {
+  name: "Alice",
+  address: {
+    city: "Delhi"
+  }
+};
+
+console.log(person?.address?.city); // Output: "Delhi" or undefined if address or city is missing
+
+```
+
+Here we can access the property city as
+console.log(person.address.city)
+But suppose if we don't have address property then while accessing address it will give the o/p as undefined and if we try to access city then it will give an error.
+To overcome this we use ternary/conditional operator.
+eg : console.log(person.address ? person.address.city : undefined)
+eg : console.log(person.address && person.address.city)
+But here the code is repeated and is not an ideal approach when accessing the properties of deep nested structure.
+Here comes optional chaining that provides an efficient way.
+The optional chaining ?. is a safe way to access nested object properties even if an intermediate property doesn't exists.
+The optional chaining stops the evaluation if the value before ? is undefined or null and returns undefined.
+eg : console.log(person?.address?.city);
+If the address property is present then it will display the city else will display undefined rather than throwing an error.
+
+6. What is Shimmer UI?
+
+Shimmer UI is a technique used to provide users with a visual representation of loading content before it is rendered. Instead of showing a blank or empty space, Shimmer UI displays a subtle animation or skeleton screen that mimics the layout and structure of the expected content. This gives users an indication that the application is actively loading and provides a better user experience by reducing the perceived loading time.
+
+Shimmer UI is used to make a better user experience.
+
+7. What is the difference between JS expression and JS statement?
+
+`A JS expression returns a value that we use in the application. `
+
+```
+4 + 2; // Output: 6
+"foo".toUpperCase(); // Output: "FOO"
+
+```
+
+`A JS statement performs an action but does not produce a value.`
+
+```
+let x; // Variable declaration statement
+if (condition) {
+  // If statement
+  // Code to execute if the condition is true
+}
+
+```
+
+If we want to use JS expressions need to be wrapped in curly braces {} to be evaluated within the JSX syntax, while statements should be wrapped in parentheses ().
+
+8. What is conditional rendering explain with a code example?
+
+In react we can create multiple components and after that render them depending on some conditions or the state of our application.
+Conditional rendering is the practice of rendering different components or elements based on certain conditions or the state of the application. It allows you to control what content is displayed to the user based on specific logic. Here are four different approaches to conditional rendering in React:
+
+eg: If user is logged in the display Welcome user else display welcome guest.
+
+## 4 different approaches:
+
+a] `using if-else:`
+
+    ```
+    if (isLoggedIn) {
+
+return <div>Welcome User</div>;
+} else {
+return <div>Welcome Guest</div>;
+}
+
+    ```
+
+b] `using element variable:`
+
+    ```
+    let message;
+
+if (isLoggedIn) {
+message = "Welcome User";
+} else {
+message = "Welcome Guest";
+}
+return <div>{message}</div>;
+
+    ```
+
+c] `using ternary operator:`
+
+    ```
+    isLoggedIn ? <div>Welcome User</div> : <div>Welcome Guest</div>;
+
+    ```
+
+d] `short circuit operator:`
+
+    ```
+    isLoggedIn && <div>Welcome User</div>;
+
+    ```
+
+9. What is CORS?
+
+CORS (Cross-Origin Resource Sharing) is mechanism that aims to allow requests made on behalf of you and at the same time block requests made by rogue JS and is triggered when making an HTTP request to a different domain, sub-domain, port or protocol.
+
+It is a security feature implemented by browsers to prevent rogue JavaScript code from making unauthorized requests on behalf of the user. `CORS` is enforced when making HTTP requests from a web page to a different origin. It involves the browser sending a `preflight` request (`OPTIONS`) to the server to check if the requested resource allows cross-origin access. If the server responds with the appropriate CORS headers, the browser allows the actual request to proceed.
+
+10. What is` async` and `await`?
+
+`Asynchronous functions use async keyword with normal function declaration.`
+Syntax - async function functionName(parameters){
+// code
+}
+`You can also use it in arrow function`
+Syntax - const functionName = async () => {
+// code
+}
+`Asynchronous functions always returns promises. It doesn't matter what you return The returned value will always be a promise.`
+When you call a promise you handle it will .then()
+Now a days await is mostly used. await keyword lets you wait for the promise to resolve.
+To make sure something happens in a order we use async and await pattern.
+
+```
+async function getRestaurants() {
+  const data = await fetch("URL");
+  const json = await data.json();
+  console.log(json);
+}
+
+```
+
+11. What is the use of `const json = await data.json` in getRestaurants() ?
+
+The data object, returned by the 'await fetch()', is a generic placeholder for multiple data formats.
+so we can extract the 'JSON object' from a 'fetch' response by using 'await data.json()'.
+'data.json()' is a method on the data object that lets you extract a 'JSON object' from the data or response. The method returns a promise because we have used 'await' keyword.
+data.json() returns a promise resolved to a JSON object.
+
+
+/*  we can call api in 2 way
+
+1.  `load the component -> immediate make api call ->  populate the data on ui`
+2. `*** load  the component -> render the component body as skeleton -> make api call -> rerender the component ==>(React preferred with the help of useEffect)`
+*/
