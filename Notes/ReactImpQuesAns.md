@@ -159,7 +159,8 @@ To avoid props drilling, you can use one of the following techniques:
 1. **Using State Management Library like Redux**: Redux is a state management library that provides a centralized store accessible from any component. It allows components to retrieve and update data without the need to pass props through the entire component tree.
 
 2. What is React's Context API, and how can you use it to manage global state?
-   👉 Answer: React's Context API provides a way to pass data through the component tree without having to pass props manually at every level. It enables efficient global state management in applications, allowing components to access and update shared data.
+
+👉 Answer: **React's Context API** provides a way to pass data through the component tree without having to pass props manually at every level. It enables efficient global state management in applications, allowing components to access and update shared data.
 
 ```
 
@@ -216,7 +217,7 @@ return (
 
 12. What are `React's controlled and uncontrolled components`, and when should you use each?
 
-👉 Answer: Controlled components have their state controlled by React through props and react to user input via event handlers. Uncontrolled components store their state internally in the DOM and are controlled by the DOM itself.
+👉 Answer: **Controlled components** have their state controlled by React through props and react to user input via event handlers. Uncontrolled components store their state internally in the DOM and are controlled by the DOM itself.
 
 ```
 
