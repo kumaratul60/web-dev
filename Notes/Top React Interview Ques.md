@@ -24,7 +24,7 @@ DO NOT go to Interview without preparing for them !!
 17. How can you prevent unnecessary re-renders in React?
 18. What are the different ways to style components in React?
 19. What are the key considerations when implementing a scalable React application?
-20. Describe the concept of reusability, modularity, testability in React components.
+20. Describe the concept of reusability, modularity, and testability in React components.
 
 21. What is Lifting State Up in React?
 22. What is React context?
