@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { resList } from "../../utils/mockData";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
+import { RESTRA_API } from "../../utils/constants";
 import "./Card.css";
 import Shimmer from "../Shimmer/Shimmer";
+import { Link } from "react-router-dom";
 
 //  not using keys (not acceptable) <<< index as key <<<<<<<< uniques id  (best practice)
 
@@ -41,20 +43,23 @@ const Card = () => {
 
   const fetchData = async () => {
     //  fetch superpower get from browser JS engine
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6609677&lng=77.2276704&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(RESTRA_API);
     // fetch return  a promise
     //  convert above data into json
     const result = await data.json();
 
-    // Bad way to handle the data
-    // setFilteredRestaurants(result.data.cards[2].data.data.cards)
+    const newData =
+      result?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants;
 
-    // Good way to  handle the data
-    setFilteredRestaurants(result?.data?.cards[2]?.data?.data?.cards);
-    setNewFilteredRestaurants(result?.data?.cards[2]?.data?.data?.cards);
-    console.log({ result, filteredRestaurants, newFilteredRestaurants });
+    setFilteredRestaurants(newData);
+    setNewFilteredRestaurants(newData);
+    console.log({
+      result,
+      newData,
+      filteredRestaurants,
+      newFilteredRestaurants,
+    });
   };
 
   console.log("card rendered");
@@ -63,9 +68,10 @@ const Card = () => {
 
   const handleClick = () => {
     const updatedList = filteredRestaurants.filter(
-      (res) => res.data.avgRating > 4
+      (res) => res.info.avgRating > 4
     );
-    setFilteredRestaurants(updatedList);
+    // setFilteredRestaurants(updatedList);
+    setNewFilteredRestaurants(updatedList);
     console.log({ filteredRestaurants, updatedList });
   };
 
@@ -76,7 +82,7 @@ const Card = () => {
   //   )
   // }
 
-  return filteredRestaurants.length === 0 ? (
+  return filteredRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="card-body">
@@ -95,7 +101,7 @@ const Card = () => {
             onClick={() => {
               console.log({ searchText });
               const filterTextRes = filteredRestaurants.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               // setFilteredRestaurants(filterTextRes);
               setNewFilteredRestaurants(filterTextRes);
@@ -113,9 +119,24 @@ const Card = () => {
           <RestaurantCard key={restaurant.data?.id} resData={restaurant} />
         ))} */}
 
-        {newFilteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.data?.id} resData={restaurant} />
-        ))}
+        {newFilteredRestaurants &&
+          newFilteredRestaurants.map((restaurant) => (
+            <>
+              {/* <RestaurantCard
+                key={restaurant.info?.id}
+                resData={restaurant?.info}
+              /> */}
+
+              {/* key should be present  in PARENT jsx */}
+
+              <Link
+                key={restaurant.info?.id}
+                to={"/restaurants/" + restaurant.info?.id}
+              >
+                <RestaurantCard resData={restaurant?.info} />
+              </Link>
+            </>
+          ))}
       </div>
     </div>
   );

@@ -26,4 +26,29 @@ DO NOT go to Interview without preparing for them !!
 19. What are the key considerations when implementing a scalable React application?
 20. Describe the concept of reusability, modularity, testability in React components.
 
+21. What is Lifting State Up in React?
+22. What is React context?
+23. What are different ways to add CSS in your app?
+24. What is Hot Module Replacement?
+25. What is the use of Parcel, Vite, Webpack?
+26. How does create-react-app work?
+
+27. What is Tree Shaking?
+28. Difference b/w dependency and devDependency
+29. What is npx and npm?
+30. Difference b/w package .json and package-lock .json
+31. Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent());
+
+32. What is React.Fragment?
+33. What is the purpose of dependency array in useEffect? What is the difference when it is used and when it is not used?
+34. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
+35. What is the use of return in useEffect ?
+36. Difference b/w client-side routing and server-side routing?
+
+37. Explain the concept of code splitting and its benefits in React.
+38. How does React handle routing and navigation?
+39. What are higher-order components (HOC) in React?
+40. What are controlled and uncontrolled components?
+41. Explain the concept of reconciliation in React.
+
 Good luck for your React Interviews! 💪🚀

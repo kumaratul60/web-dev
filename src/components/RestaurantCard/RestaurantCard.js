@@ -15,7 +15,7 @@ const RestaurantCard = (props) => {
     costForTwo,
     deliveryTime,
     cloudinaryImageId,
-  } = resData?.data;
+  } = resData;
 
   return (
     <div

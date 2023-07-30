@@ -1,10 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HEADER_URL } from "../../utils/constants";
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   // let btnName = "Login";
-  const [btnState,setBtnState] = useState("Login")
+  const [btnState, setBtnState] = useState("Login");
+
+  console.log("header");
+
+  useEffect(() => {
+    console.log("run");
+  }, []);
+
+  console.log("header jsx");
 
   return (
     <div className="header">
@@ -13,9 +22,16 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About </li>
-          <li>Contact </li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About </Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact </Link>
+          </li>
+
           <li>Cart</li>
           {/* <button
             className="login"
@@ -26,7 +42,9 @@ const Header = () => {
           <button
             className="login"
             onClick={() => {
-             btnState === "Login"? setBtnState("Logout"): setBtnState("Login")
+              btnState === "Login"
+                ? setBtnState("Logout")
+                : setBtnState("Login");
             }}
           >
             {/* {btnName} */}

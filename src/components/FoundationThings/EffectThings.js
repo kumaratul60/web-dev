@@ -34,6 +34,14 @@ const Card = () => {
   //  whenever state variables update, react trigger a reconciliation cycle or re-render the component
   console.log("card body render");
 
+  // useEffect is a named import function, which is used for side effect in ui and take 2 arguments one is call back function and another is  dependency array.
+
+  //  useEffect call after every time component is rendered
+
+  // if no  dependency array => useEffect is called on every render
+  //  if dependency array is empty => useEffect is called on initial render(just once)
+  //  if dependency array is  [searchText] => called everytime searchText is updated
+
   useEffect(() => {
     fetchData();
     console.log("useEffect run");
