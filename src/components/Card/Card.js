@@ -70,7 +70,7 @@ const Card = () => {
     const updatedList = filteredRestaurants.filter(
       (res) => res.info.avgRating > 4
     );
-    // setFilteredRestaurants(updatedList);
+
     setNewFilteredRestaurants(updatedList);
     console.log({ filteredRestaurants, updatedList });
   };
@@ -103,7 +103,7 @@ const Card = () => {
               const filterTextRes = filteredRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
-              // setFilteredRestaurants(filterTextRes);
+
               setNewFilteredRestaurants(filterTextRes);
             }}
           >
@@ -115,10 +115,6 @@ const Card = () => {
         </button>
       </div>
       <div className="card-container">
-        {/* {filteredRestaurants.map((restaurant) => (
-          <RestaurantCard key={restaurant.data?.id} resData={restaurant} />
-        ))} */}
-
         {newFilteredRestaurants &&
           newFilteredRestaurants.map((restaurant) => (
             <>

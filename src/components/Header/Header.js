@@ -7,13 +7,13 @@ const Header = () => {
   // let btnName = "Login";
   const [btnState, setBtnState] = useState("Login");
 
-  console.log("header");
+  // console.log("header");
 
   useEffect(() => {
-    console.log("run");
+    // console.log("run");
   }, []);
 
-  console.log("header jsx");
+  // console.log("header jsx");
 
   return (
     <div className="header">

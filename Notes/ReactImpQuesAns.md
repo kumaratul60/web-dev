@@ -417,4 +417,82 @@ return <div>Different ways to fetch data</div>
 
 ```
 
+14. How can you optimize React performance using code splitting?
+
+👉 Answer: Code splitting involves breaking your application into smaller chunks (bundling) and loading them on demand. React.lazy and Suspense are used to achieve code splitting, which can significantly reduce the initial loading time of your application.
+
+```
+Code example using React.lazy and Suspense:
+
+import React, { lazy, Suspense } from 'react';
+
+const LazyComponent = lazy(() => import('./LazyComponent'));
+
+const App = () => {
+ return (
+  <Suspense fallback={<div>Loading...</div>}>
+   <LazyComponent />
+  </Suspense>
+ );
+};
+
+```
+
+--
+
+15. How can you handle side effects in React using useEffect?
+
+👉 Answer: The useEffect hook allows you to perform side effects in functional components. You can use it to handle tasks like data fetching, subscriptions, or manually changing the DOM.
+
+```
+Code example:
+import React, { useEffect, useState } from 'react';
+
+const MyComponent = () => {
+ const [data, setData] = useState([]);
+
+ useEffect(() => {
+  // Fetch data from an API
+  fetch('https://lnkd.in/d5PWjfXF')
+   .then((response) => response.json())
+   .then((data) => setData(data));
+ }, []);
+
+ return (
+  // Display data here
+ );
+};
+
+```
+
+-- 16. How can you handle form data in React components?
+
+👉 Answer: You can manage form data using controlled components, where form elements are bound to state and updated through event handlers.
+
+```
+Code example of a controlled input:
+import React, { useState } from 'react';
+
+const MyForm = () => {
+ const [inputValue, setInputValue] = useState('');
+
+ const handleChange = (event) => {
+  setInputValue(event.target.value);
+ };
+
+ const handleSubmit = (event) => {
+  event.preventDefault();
+  // Handle form submission with 'inputValue'
+ };
+
+ return (
+  <form onSubmit={handleSubmit}>
+   <input type="text" value={inputValue} onChange={handleChange} />
+   <button type="submit">Submit</button>
+  </form>
+ );
+};
+
+```
+
 --
