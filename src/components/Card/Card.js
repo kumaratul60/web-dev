@@ -5,6 +5,7 @@ import { RESTRA_API } from "../../utils/constants";
 import "./Card.css";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../hooks/useOnlineStatus";
 
 //  not using keys (not acceptable) <<< index as key <<<<<<<< uniques id  (best practice)
 
@@ -81,6 +82,16 @@ const Card = () => {
   //   <Shimmer/>
   //   )
   // }
+
+  const activeStatus = useOnlineStatus();
+
+  if (!activeStatus) {
+    return (
+      <h1>
+        Looks like you are offline, <em>check your internet connection</em>
+      </h1>
+    );
+  }
 
   return filteredRestaurants?.length === 0 ? (
     <Shimmer />

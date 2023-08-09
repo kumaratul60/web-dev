@@ -6,8 +6,8 @@ const Error = () => {
   return (
     <div>
       <h1>Oops... Something went wrong</h1>
-      <h1> {`${err?.status} ${err?.statusText}`}</h1>
-      <p> {err?.error?.message}:{err?.data}</p>
+      <h1> {`${err?.status ?? "check again "}`}</h1>
+      <p> {err?.error?.message ??"🤺"}:{err?.data}</p>
     </div>
   );
 };

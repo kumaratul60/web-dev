@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { HEADER_URL } from "../../utils/constants";
 import "./Header.css";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../hooks/useOnlineStatus";
+
 
 const Header = () => {
   // let btnName = "Login";
@@ -13,6 +15,8 @@ const Header = () => {
     // console.log("run");
   }, []);
 
+  const activeStatus = useOnlineStatus()
+
   // console.log("header jsx");
 
   return (
@@ -22,6 +26,9 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+        <li>
+          Online Status:{activeStatus? "✅":"❌"}
+        </li>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -30,6 +37,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="/contact">Contact </Link>
+          </li>
+          <li>
+            <Link to="/grocery">Grocery </Link>
           </li>
 
           <li>Cart</li>
