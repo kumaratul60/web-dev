@@ -58,18 +58,19 @@ const Card = () => {
     <Shimmer />
   ) : (
     <div className="card-body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="p-4 m-4">
           <input
-            className="search-box"
+            className="border-solid border mx-2 border-black"
             type="text"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
           />
+
           <button
-            className="btn-search"
+            className="px-4 py-2 border border-double  border-blue-300 rounded-lg   bg-green-300  hover:bg-blue-500 "
             onClick={() => {
               console.log({ searchText });
               const filterTextRes = filteredRestaurants.filter((res) =>
@@ -82,11 +83,16 @@ const Card = () => {
             Search
           </button>
         </div>
-        <button className="filter-btn" onClick={handleClick}>
-          Top Rated Restaurant
-        </button>
+        <div className="p-4 m-4 flex items-center">
+          <button
+            className=" px-4 py-2 bg-gray-100 rounded-lg"
+            onClick={handleClick}
+          >
+            Top Rated Restaurant
+          </button>
+        </div>
       </div>
-      <div className="card-container">
+      <div className="flex flex-wrap">
         {newFilteredRestaurants &&
           newFilteredRestaurants.map((restaurant) => (
             <>
