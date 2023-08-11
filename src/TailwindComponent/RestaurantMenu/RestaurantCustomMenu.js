@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "../Shimmer/Shimmer";
 import useRestaurantMenu from "../../hooks/useRestaurantMenu";
+import RestaurantCategory from "../RestaurantCategory/RestaurantCategory";
 
 const RestaurantCustomMenu = () => {
   const { resId } = useParams();
+
+  const dummy = "dummy check12"
+
+  const [showIndex, setShowIndex] = useState(null);
 
   const resCustomInfo = useRestaurantMenu(resId);
 
@@ -16,28 +22,34 @@ const RestaurantCustomMenu = () => {
     resCustomInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
       ?.card;
 
-  return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>
-        {cuisines.join(", ")} - {costForTwoMessage}
-      </p>
+  const categories =
+    resCustomInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (category) =>
+        category.card?.card?.["@type"] ===
+        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+    );
 
-      <ul>
-        {itemCards !== undefined ? (
-          <>
-            {itemCards.map((item) => (
-              <li key={item?.card?.info?.id}>
-                {item?.card?.info?.name} -{" Rs."}
-                {item?.card?.info?.price / 100 ||
-                  item?.card?.info?.defaultPrice / 100}
-              </li>
-            ))}
-          </>
-        ) : (
-          "no items available here now"
-        )}
-      </ul>
+  return (
+    <div className=" mt-4 text-center  ">
+      <h1 className="font-bold text-2xl my-5">{name}</h1>
+      <p>
+        <span className="font-bold text-lg">{cuisines.join(", ")}</span> -{" "}
+        {costForTwoMessage}
+      </p>
+      {/* category accordions */}
+      {categories.map((categoryItem, index) => (
+        <>
+          {/*  controlled component */}
+          <RestaurantCategory
+            key={categoryItem?.card?.card?.title}
+            cardData={categoryItem?.card?.card}
+            //  if  want to show first item in accordions
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
+            dummyC = {dummy}
+          />
+        </>
+      ))}
     </div>
   );
 };

@@ -36,4 +36,21 @@ const RestaurantCard = (props) => {
   );
 };
 
+//  Higher Order Component ==> take input as component and return a enhanced component as the output. HOC are pure functions
+
+//  input -> RestaurantCard
+//  output -> RestaurantCardPromoted
+// {...props} => we receive all the props which is passed to PromotedRestaurantCard component
+
+export const withPromotedLabel = (RestaurantCardComponentAsParam) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="m-2 p-2 bg-gray-900 rounded-lg text-white absolute">Promoted</label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
