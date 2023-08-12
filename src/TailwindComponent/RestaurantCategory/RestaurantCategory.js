@@ -2,6 +2,7 @@ import { useState } from "react";
 import ItemList from "../ItemList";
 
 const RestaurantCategory = ({ cardData, showItems, setShowIndex,dummyC }) => {
+
   //   const [showItems, setShowItems] = useState(false);
   const handleClick = () => {
     //   setShowItems(!showItems);
@@ -31,7 +32,7 @@ if a component has no own state is known as controlled component means it contro
           <span className="">⬇️</span>
         </div>
         {/* Accordions body */}
-        {showItems && <ItemList items={cardData?.itemCards} dummyD  = {dummyC} />}
+        {showItems && <ItemList items={cardData?.itemCards} dummyE  = {dummyC} />}
       </div>
     </div>
   );

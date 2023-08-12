@@ -1,5 +1,9 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Provider } from "react-redux";
+
+import "./App.css";
 
 import About from "./TailwindComponent/About/About";
 import Card from "./TailwindComponent/Card/Card";
@@ -7,11 +11,11 @@ import Contact from "./TailwindComponent/Contact/Contact";
 import Error from "./TailwindComponent/Error/Error";
 import Header from "./TailwindComponent/Header/Header";
 import RestaurantCustomMenu from "./TailwindComponent/RestaurantMenu/RestaurantCustomMenu";
+import Cart from "./TailwindComponent/Cart";
 
 const GroceryPage = lazy(() => import("./components/Grocery"));
 
-import "./App.css";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import appStore from "./Redux/store";
 import UserContext from "./utils/UserContext";
 
 const AppLayout = () => {
@@ -27,28 +31,14 @@ const AppLayout = () => {
   }, []);
 
   return (
-    //  if want to use userContext.provider for specific component then we can do also by wrapping it in with only that component
-    //  we wrap it with nested userContext.provider also, and change the name so only that name will reflect in  nested wrapped component , rest of component will use  global userContext.
-
-    //  Default
-    // <UserContext.Provider value={{ loggedInUser: userName }}>
-    // {/* Atul Awasthi */}
-    //   <div className="app">
-    //   {/* Mark */}
-    //   <UserContext.Provider value={{ loggedInUser: "Mark" }}>
-    //     <Header />
-    //     </UserContext.Provider>
-    //     <Outlet />
-    //   </div>
-    // </UserContext.Provider>
-
-    <UserContext.Provider value={{ loggedInUser: userName,setUserName }}>
-      <div className="app">
-        <Header />
-
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+        <div className="app">
+          <Header />
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -73,6 +63,10 @@ const appRouter = createBrowserRouter([
         path: "/restaurants/:resId",
 
         element: <RestaurantCustomMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/grocery",

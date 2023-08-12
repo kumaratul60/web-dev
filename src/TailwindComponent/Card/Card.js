@@ -32,12 +32,7 @@ const Card = () => {
 
     setFilteredRestaurants(newData);
     setNewFilteredRestaurants(newData);
-    console.log({
-      result,
-      newData,
-      filteredRestaurants,
-      newFilteredRestaurants,
-    });
+  
   };
 
   const handleClick = () => {
@@ -46,7 +41,7 @@ const Card = () => {
     );
 
     setNewFilteredRestaurants(updatedList);
-    console.log({ filteredRestaurants, updatedList });
+    // console.log({ filteredRestaurants, updatedList });
   };
 
   const activeStatus = useOnlineStatus();
