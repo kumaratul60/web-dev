@@ -4,6 +4,7 @@ import ReactDOM from "react-dom/client";
 /*
 Parcel do:
 
+* Parcel using babel behind the scenes
 * Created a server (parcel-cache)
 * HMR => Hot Module Replacement
 * File Watcher algorithm - C++  ==> Parcel watches every file in your project root (including node_modules)
