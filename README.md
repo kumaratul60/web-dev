@@ -43,15 +43,18 @@
 * Two types of `Export/Import`
 
   - Default Export/Import
+  - Named Export/Import
 
 ```
+Default Export/Import
+
 export default Component;
 import Component from "path";
 ```
 
-- Named Export/Import
-
 ```
+ Named Export/Import
+
 export const Component;
 import {Component} from "path";
 ```
