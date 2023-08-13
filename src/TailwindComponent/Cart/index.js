@@ -1,14 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
 import ItemList from "../ItemList";
-import { clearCart } from "../../Redux/slices/cartSlice";
+import { clearCart } from "../../Redux/slice/cartSlice";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
 
 //   Never subscribe whole  store at a time, always subscribe a small portion of store as of requirement
   const cartItems = useSelector((store) => store.cart.items);
-  console.log({ cartItems });
-  const r = "check";
+  console.log({ cartPage:cartItems });
+  const r = "check00";
 
   const handleClearCart = () => {
     dispatch(clearCart());

@@ -32,7 +32,8 @@ const Card = () => {
 
     setFilteredRestaurants(newData);
     setNewFilteredRestaurants(newData);
-  
+
+    console.log({ cardJson: result?.data });
   };
 
   const handleClick = () => {
