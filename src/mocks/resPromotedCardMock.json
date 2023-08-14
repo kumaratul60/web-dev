@@ -1,0 +1,79 @@
+{
+  "id": "355347",
+  "name": "Grameen Kulfi",
+  "cloudinaryImageId": "cerf78mkhmur4cjnilkz",
+  "locality": "LCS Market",
+  "areaName": "Ashok Vihar",
+  "costForTwo": "₹120 for two",
+  "cuisines": ["Ice Cream", "Desserts"],
+  "avgRating": 4.2,
+  "veg": true,
+  "feeDetails": {
+    "restaurantId": "355347",
+    "fees": [
+      {
+        "name": "BASE_DISTANCE",
+        "fee": 7000
+      },
+      {
+        "name": "BASE_TIME"
+      },
+      {
+        "name": "ANCILLARY_SURGE_FEE"
+      }
+    ],
+    "totalFee": 7000
+  },
+  "parentId": "12175",
+  "avgRatingString": "4.2",
+  "totalRatingsString": "100+",
+  "sla": {
+    "deliveryTime": 34,
+    "lastMileTravel": 7.6,
+    "serviceability": "SERVICEABLE",
+    "slaString": "34 mins",
+    "lastMileTravelString": "7.6 km",
+    "iconType": "ICON_TYPE_EMPTY"
+  },
+  "availability": {
+    "nextCloseTime": "2023-08-14 00:00:00",
+    "opened": true
+  },
+  "badges": {},
+  "isOpen": true,
+  "type": "F",
+  "badgesV2": {
+    "entityBadges": {
+      "imageBased": {},
+      "textBased": {},
+      "textExtendedBadges": {}
+    }
+  },
+  "aggregatedDiscountInfoV3": {
+    "header": "EVERY ITEM",
+    "subHeader": "@ ₹99",
+    "discountCalloutInfo": {
+      "message": "Free Delivery",
+      "logoCtx": {
+        "logo": "v1655895371/free_delivery_logo_hqipbo.png"
+      }
+    }
+  },
+  "orderabilityCommunication": {
+    "title": {},
+    "subTitle": {},
+    "message": {},
+    "customIcon": {}
+  },
+  "differentiatedUi": {
+    "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+    "differentiatedUiMediaDetails": {
+      "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+      "lottie": {},
+      "video": {}
+    }
+  },
+  "reviewsSummary": {},
+  "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+  "restaurantOfferPresentationInfo": {}
+}

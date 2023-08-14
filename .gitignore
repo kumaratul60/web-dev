@@ -7,3 +7,6 @@ dist/
 
 # parcel
 .parcel-cache
+
+# test
+coverage

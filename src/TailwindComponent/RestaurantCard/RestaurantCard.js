@@ -6,6 +6,7 @@ const styleColor = {
 
 const RestaurantCard = (props) => {
   const { resData } = props;
+  // console.log({resCardData:resData});
 
   const {
     name,
@@ -13,6 +14,7 @@ const RestaurantCard = (props) => {
     avgRating,
     costForTwo,
     deliveryTime,
+    sla,
     cloudinaryImageId,
   } = resData;
 
@@ -27,10 +29,10 @@ const RestaurantCard = (props) => {
       <h4 className="py-1 break-words">{cuisines.join(",")}</h4>
       <div className="flex justify-between">
         <h4 className="py-1">⭐{avgRating}</h4>
-        <h4 className="py-1">{deliveryTime ?? "10 "}min</h4>
+        <h4 className="py-1">{sla.deliveryTime ?? "10 "}min</h4>
       </div>
       <div className=" flex justify-center">
-        <h5 className="py-1">₹{costForTwo / 100 ? "NaN" : "400 "} FOR TWO</h5>
+        <h5 className="py-1">{costForTwo}</h5>
       </div>
     </div>
   );

@@ -1,0 +1,106 @@
+{
+  "id": "581107",
+  "name": "Nirula's",
+  "cloudinaryImageId": "94c82b9d46792c198fff64899ff05bd2",
+  "locality": "Jawahar Nagar",
+  "areaName": "Kamla Nagar",
+  "costForTwo": "₹500 for two",
+  "cuisines": [
+    "Pizzas",
+    "Burgers",
+    "Ice Cream",
+    "North Indian",
+    "Fast Food",
+    "Pastas",
+    "Beverages"
+  ],
+  "avgRating": 4.2,
+  "feeDetails": {
+    "restaurantId": "581107",
+    "fees": [
+      {
+        "name": "BASE_DISTANCE",
+        "fee": 4600
+      },
+      {
+        "name": "BASE_TIME"
+      },
+      {
+        "name": "ANCILLARY_SURGE_FEE"
+      }
+    ],
+    "totalFee": 4600
+  },
+  "parentId": "1738",
+  "avgRatingString": "4.2",
+  "totalRatingsString": "100+",
+  "sla": {
+    "deliveryTime": 25,
+    "lastMileTravel": 3.6,
+    "serviceability": "SERVICEABLE",
+    "slaString": "25 mins",
+    "lastMileTravelString": "3.6 km",
+    "iconType": "ICON_TYPE_EMPTY"
+  },
+  "availability": {
+    "nextCloseTime": "2023-08-13 23:00:00",
+    "opened": true
+  },
+  "badges": {
+    "textExtendedBadges": [
+      {
+        "iconId": "guiltfree/GF_Logo_android_3x",
+        "shortDescription": "options available",
+        "fontColor": "#7E808C"
+      }
+    ]
+  },
+  "isOpen": true,
+  "type": "F",
+  "badgesV2": {
+    "entityBadges": {
+      "imageBased": {},
+      "textBased": {},
+      "textExtendedBadges": {
+        "badgeObject": [
+          {
+            "attributes": {
+              "description": "",
+              "fontColor": "#7E808C",
+              "iconId": "guiltfree/GF_Logo_android_3x",
+              "shortDescription": "options available"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "aggregatedDiscountInfoV3": {
+    "header": "₹125 OFF",
+    "subHeader": "ABOVE ₹199",
+    "discountTag": "FLAT DEAL",
+    "discountCalloutInfo": {
+      "message": "Free Delivery",
+      "logoCtx": {
+        "logo": "v1655895371/free_delivery_logo_hqipbo.png"
+      }
+    }
+  },
+  "orderabilityCommunication": {
+    "title": {},
+    "subTitle": {},
+    "message": {},
+    "customIcon": {}
+  },
+  "differentiatedUi": {
+    "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+    "differentiatedUiMediaDetails": {
+      "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+      "lottie": {},
+      "video": {}
+    }
+  },
+  "reviewsSummary": {},
+  "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+  "restaurantOfferPresentationInfo": {}
+}
