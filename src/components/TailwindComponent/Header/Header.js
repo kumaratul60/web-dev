@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { HEADER_URL } from "../../../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../../hooks/useOnlineStatus";
-import UserContext from "../../../utils/UserContext";
+import UserContext from "../../../utils/userContext";
 import { useSelector } from "react-redux";
 
 const Header = () => {
@@ -26,22 +26,24 @@ const Header = () => {
         <img className="w-20" src={HEADER_URL} alt="logo" />
       </div>
       <div className="flex items-center">
-        <ul className="flex gap-8 p-4 m-4">
-          <li>Online Status:{activeStatus ? "✅" : "❌"}</li>
-          <li>
+        <ul className="flex gap-8 p-4 ">
+          <li className="text-md  hover:text-pink-600 transition-colors duration-300">
+            Online Status:{activeStatus ? "✅" : "❌"}
+          </li>
+          <li className="text-md  hover:text-pink-600 transition-colors duration-300">
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="text-md  hover:text-pink-600 transition-colors duration-300">
             <Link to="/about">About </Link>
           </li>
-          <li>
+          <li className="text-md  hover:text-pink-600 transition-colors duration-300">
             <Link to="/contact">Contact </Link>
           </li>
-          <li>
+          <li className="text-md  hover:text-pink-600 transition-colors duration-300">
             <Link to="/grocery">Grocery </Link>
           </li>
 
-          <li className="font-semibold">
+          <li className="text-md font-semibold hover:text-pink-600 transition-colors duration-300">
             <Link to="/cart">
               Cart ({cartItems.length > 0 ? cartItems.length : 0} items)
             </Link>
@@ -50,7 +52,11 @@ const Header = () => {
           {/* <li>{cartData}</li> */}
 
           <button
-            className="login"
+            className={`text-md font-semibold ${
+              btnState === "Login"
+                ? "hover:text-green-600"
+                : "hover:text-pink-600"
+            }`}
             onClick={() => {
               btnState === "Login"
                 ? setBtnState("Logout")
@@ -59,7 +65,9 @@ const Header = () => {
           >
             {btnState}
           </button>
-          <li className="px-4 font-semibold">{loggedInUser}</li>
+          <li className="px-4 font-semibold text-md  hover:text-green-600 transition-colors duration-300">
+            {loggedInUser}
+          </li>
         </ul>
       </div>
     </div>

@@ -19,20 +19,28 @@ const RestaurantCard = (props) => {
   } = resData;
 
   return (
-    <div className="m-4 p-4 w-[250px] rounded-xl transition ease-in-out delay-150  hover:-translate-y-2 hover:bg-pink-100">
+    <div
+      data-testid="resCard"
+      className="relative m-4 p-4 w-[250px] rounded-xl transition transform hover:scale-105 hover:shadow-lg bg-white"
+    >
       <img
-        className="rounded-lg"
+        className="rounded-lg w-full h-40 object-cover"
         src={`${CDN_URL}/${cloudinaryImageId}`}
         alt="res-logo"
       />
-      <h3 className=" py-2 font-bold text-lg">{name}</h3>
-      <h4 className="py-1 break-words">{cuisines.join(",")}</h4>
-      <div className="flex justify-between">
-        <h4 className="py-1">⭐{avgRating}</h4>
-        <h4 className="py-1">{sla.deliveryTime ?? "10 "}min</h4>
+      <h3 className="py-2 font-semibold text-lg">{name}</h3>
+      <h4 className="py-1 break-words text-gray-600">{cuisines.join(", ")}</h4>
+      <div className="flex justify-between items-center">
+        <div className="flex items-center">
+          <span className="text-yellow-500 mr-1">⭐</span>
+          <span className="py-1 text-sm">{avgRating}</span>
+        </div>
+        <span className="py-1 text-sm">
+          {sla?.deliveryTime ? `${sla.deliveryTime} min` : "10 min"}
+        </span>
       </div>
-      <div className=" flex justify-center">
-        <h5 className="py-1">{costForTwo}</h5>
+      <div className="flex justify-center">
+        <h5 className="py-1 text-green-600">{costForTwo}</h5>
       </div>
     </div>
   );
@@ -47,8 +55,10 @@ const RestaurantCard = (props) => {
 export const withPromotedLabel = (RestaurantCardComponentAsParam) => {
   return (props) => {
     return (
-      <div>
-        <label className="m-2 p-2 bg-gray-900 rounded-lg text-white absolute">Promoted</label>
+      <div className="relative">
+        <label className="m-2 p-2  bg-gray-900  rounded-lg text-white absolute top-0 left-0 z-10">
+          Promoted
+        </label>
         <RestaurantCard {...props} />
       </div>
     );
