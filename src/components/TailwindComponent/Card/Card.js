@@ -27,7 +27,8 @@ const Card = () => {
     const data = await fetch(RESTRA_API);
 
     const json = await data.json();
-    console.log({ cardJSON: json });
+    
+    // console.log({ cardJSON: json });
 
     setListOfRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants

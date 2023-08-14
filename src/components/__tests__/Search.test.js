@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Card from "../TailwindComponent/Card/Card";
 import FETCH_CARD_MOCK_DATA from "../../mocks/fetchCardMockData.json";
@@ -31,8 +31,8 @@ it("Should render Card body component with Search button", async () => {
   // Debug: Output the entire document structure to console
   // console.log(document.body.innerHTML);
 
-  const cardBeforeSearch = screen.getAllByTestId("resCard");
-  console.log(cardBeforeSearch.length);
+  const cardBeforeSearch = screen.queryAllByTestId("resCard");
+  // console.log(cardBeforeSearch.length);
   expect(cardBeforeSearch.length).toBe(20);
 
   const searchBtn = screen.getByRole("button", { name: "Search" });
@@ -41,15 +41,21 @@ it("Should render Card body component with Search button", async () => {
   const searchInput = screen.getByTestId("searchInput");
   //   console.log(searchInput);
 
-  // fireEvent.change(searchInput, { target: { value: "pizza" } });
+  fireEvent.change(searchInput, { target: { value: "pizza" } });
 
-  // fireEvent.click(searchBtn);
+  fireEvent.click(searchBtn);
 
   //   Assert: screen should load res cards containing pizza
 
-  // const cardAfterSearch = screen.getAllByTestId("resCardData");
+  const cardAfterSearch = screen.getAllByTestId("resCard");
   // console.log(cardAfterSearch.length);
 
   expect(searchBtn).toBeInTheDocument();
-  // expect(cardAfterSearch.length).toBe(2);
+  expect(cardAfterSearch.length).toBe(4);
+
+  const pureVegBtn = screen.getByRole("button", { name: "Pure Veg" });
+  // expect(pureVegBtn).toBeInTheDocument();
+  fireEvent.click(pureVegBtn)
+  const pureVegCard = screen.getAllByTestId("resCard");
+  expect(pureVegCard.length).toBe(4);
 });

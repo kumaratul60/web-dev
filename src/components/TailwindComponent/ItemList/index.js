@@ -17,6 +17,7 @@ const ItemList = ({ items, dummyE }) => {
     <div>
       {items.map((item) => (
         <div
+        data-testid = "accordion-item"
           key={item?.card?.info?.id}
           className="m-2 p-2  border-gray-300  border-b-2 text-left flex  justify-between"
         >

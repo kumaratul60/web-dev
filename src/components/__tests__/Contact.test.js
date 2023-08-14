@@ -43,6 +43,22 @@ describe("Contact component", ()=>{
 
  */
 
+beforeAll(() => {
+  // console.log("Before All -> it run before starting all test cases");
+});
+
+beforeEach(() => {
+  // console.log("Before Each => it run before each test case, mainly used for cleanup");
+});
+
+afterAll(() => {
+  // console.log("after All -> it run after  all test cases");
+});
+
+afterEach(() => {
+  // console.log("after All -> it run after each test cases");
+});
+
 describe("Contact us page component test cases", () => {
   test("Should load contact component", () => {
     //  Render component

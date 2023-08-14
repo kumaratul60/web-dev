@@ -13,10 +13,12 @@ import Header from "./components/TailwindComponent/Header/Header";
 import RestaurantCustomMenu from "./components/TailwindComponent/RestaurantMenu/RestaurantCustomMenu";
 import Cart from "./components/TailwindComponent/Cart";
 
-const GroceryPage = lazy(() => import("./components/TailwindComponent/Grocery"));
+const GroceryPage = lazy(() =>
+  import("./components/TailwindComponent/Grocery")
+);
 
 import appStore from "./components/Redux/store";
-import UserContext from "./utils/UserContext";
+import UserContext from "./utils/userContext";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
@@ -31,8 +33,8 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <Provider store={ appStore }>
-      <UserContext.Provider value={ { loggedInUser: userName, setUserName } }>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div className="app">
           <Header />
           <Outlet />
@@ -72,7 +74,7 @@ const appRouter = createBrowserRouter([
         path: "/grocery",
 
         element: (
-          <Suspense fallback={ <h3>loading.....</h3> }>
+          <Suspense fallback={<h3>loading.....</h3>}>
             <GroceryPage />
           </Suspense>
         ),
@@ -85,4 +87,4 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={ appRouter } />);
+root.render(<RouterProvider router={appRouter} />);
