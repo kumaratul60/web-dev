@@ -32,68 +32,66 @@ global.fetch = jest.fn(() =>
   })
 );
 
-it("Should load restaurant Menu component", async () => {
-  await act(async () =>
-    render(
-      <BrowserRouter>
-        <Provider store={appStore}>
-          <Header />
-          <RestaurantCustomMenu />
-          <Cart />
-        </Provider>
-      </BrowserRouter>
-    )
-  );
+// describe("Should load Restaurant Menu component", () => {
+//   it("Should load restaurant Menu component", async () => {
+//     await act(async () =>
+//       render(
+//         <BrowserRouter>
+//           <Provider store={appStore}>
+//             <Header />
+//             <RestaurantCustomMenu />
+//             <Cart />
+//           </Provider>
+//         </BrowserRouter>
+//       )
+//     );
 
-  const accordionHeader = screen.getByText("Kulcha Burger (6)");
+//     const accordionHeader = screen.getByText("Kulcha Burger (6)");
 
-  fireEvent.click(accordionHeader);
+//     fireEvent.click(accordionHeader);
 
-  //   const accordionItems = screen.getAllByTestId("accordion-item")
-  //   expect(accordionItems.length).toBe(6)
+//     const accordionItems = screen.getAllByTestId("accordion-item");
+//     expect(accordionItems.length).toBe(6);
 
-  expect(screen.getAllByTestId("accordion-item").length).toBe(6);
+//     expect(screen.getAllByTestId("accordion-item").length).toBe(6);
 
-  expect(screen.getByText("Cart (0 items)")).toBeInTheDocument();
+//     expect(screen.getByText("Cart (0 items)")).toBeInTheDocument();
 
-  const addBtns = screen.getAllByRole("button", { name: "Add +" });
-  //   console.log(addBtns.length);
-  fireEvent.click(addBtns[0]);
+//     const addBtns = screen.getAllByRole("button", { name: "Add +" });
+//     //   console.log(addBtns.length);
+//     fireEvent.click(addBtns[0]);
 
-  const cartItem = screen.getByText("Cart (1 items)");
-  expect(cartItem).toBeInTheDocument();
+//     const cartItem = screen.getByText("Cart (1 items)");
+//     expect(cartItem).toBeInTheDocument();
 
-  fireEvent.click(addBtns[1]);
-  expect(screen.getByText("Cart (2 items)")).toBeInTheDocument();
+//     fireEvent.click(addBtns[1]);
+//     expect(screen.getByText("Cart (2 items)")).toBeInTheDocument();
 
-  expect(screen.getAllByTestId("accordion-item").length).toBe(8);
-  const cartBtn = screen.getByRole("button", { name: "Clear Cart" });
+//     expect(screen.getAllByTestId("accordion-item").length).toBe(8);
+//     const cartBtn = screen.getByRole("button", { name: "Clear Cart" });
 
-  fireEvent.click(cartBtn);
-  expect(screen.getAllByTestId("accordion-item").length).toBe(6);
-  expect(
-    screen.getByRole("button", { name: "Add to cart" })
-  ).toBeInTheDocument();
-  expect(screen.getByText("Cart (0 items)")).toBeInTheDocument();
-});
-
-// const renderWithProviders = () => {
-//   return render(
-//     <BrowserRouter>
-//       <Provider store={appStore}>
-//         <Header />
-//         <RestaurantCustomMenu />
-//         <Cart />
-//       </Provider>
-//     </BrowserRouter>
-//   );
-// };
+//     fireEvent.click(cartBtn);
+//     expect(screen.getAllByTestId("accordion-item").length).toBe(6);
+//     expect(
+//       screen.getByRole("button", { name: "Add to cart" })
+//     ).toBeInTheDocument();
+//     expect(screen.getByText("Cart (0 items)")).toBeInTheDocument();
+//   });
+// });
 
 // describe("Cart component test cases", () => {
 //   it("Should render cart component", async () => {
-//     await act(async () => {
-//       renderWithProviders();
-//     });
+//     await act(async () =>
+//       render(
+//         <BrowserRouter>
+//           <Provider store={appStore}>
+//             <Header />
+//             <RestaurantCustomMenu />
+//             <Cart />
+//           </Provider>
+//         </BrowserRouter>
+//       )
+//     );
 
 //     // Test logic for rendering cart component
 //     const accordionHeader = screen.getByText("Kulcha Burger (6)");
@@ -103,12 +101,24 @@ it("Should load restaurant Menu component", async () => {
 //   });
 
 //   it("Should update cart on add button click", async () => {
-//     await act(async () => {
-//       renderWithProviders();
-//     });
+//     await act(async () =>
+//       render(
+//         <BrowserRouter>
+//           <Provider store={appStore}>
+//             <Header />
+//             <RestaurantCustomMenu />
+//             <Cart />
+//           </Provider>
+//         </BrowserRouter>
+//       )
+//     );
 
 //     // Test logic for updating cart on add button click
+//     const accordionHeader = screen.getByText("Kulcha Burger (6)");
+//     fireEvent.click(accordionHeader);
+
 //     const addBtns = screen.getAllByRole("button", { name: "Add +" });
+//     console.log(addBtns.length);
 //     fireEvent.click(addBtns[0]);
 
 //     expect(screen.getByText("Cart (1 items)")).toBeInTheDocument();
@@ -120,9 +130,22 @@ it("Should load restaurant Menu component", async () => {
 //   });
 
 //   it("Should clear cart and reset items", async () => {
-//     await act(async () => renderWithProviders());
+//     await act(async () =>
+//       render(
+//         <BrowserRouter>
+//           <Provider store={appStore}>
+//             <Header />
+//             <RestaurantCustomMenu />
+//             <Cart />
+//           </Provider>
+//         </BrowserRouter>
+//       )
+//     );
 
 //     // Test logic for clearing cart and resetting items
+//     const accordionHeader = screen.getByText("Kulcha Burger (6)");
+//     fireEvent.click(accordionHeader);
+
 //     const cartBtn = screen.getByRole("button", { name: "Clear Cart" });
 //     fireEvent.click(cartBtn);
 
@@ -133,3 +156,63 @@ it("Should load restaurant Menu component", async () => {
 //     expect(screen.getByText("Cart (0 items)")).toBeInTheDocument();
 //   });
 // });
+
+const renderWithProviders = () => {
+  return render(
+    <BrowserRouter>
+      <Provider store={appStore}>
+        <Header />
+        <RestaurantCustomMenu />
+        <Cart />
+      </Provider>
+    </BrowserRouter>
+  );
+};
+
+describe("Cart component test cases", () => {
+  it("Should render cart component", async () => {
+    await act(async () => renderWithProviders());
+
+    // Test logic for rendering cart component
+    const accordionHeader = screen.getByText("Kulcha Burger (6)");
+    fireEvent.click(accordionHeader);
+
+    expect(screen.getAllByTestId("accordion-item").length).toBe(6);
+  });
+
+  it("Should update cart on add button click", async () => {
+    await act(async () => renderWithProviders());
+
+    // Test logic for updating cart on add button click
+    const accordionHeader = screen.getByText("Kulcha Burger (6)");
+    fireEvent.click(accordionHeader);
+
+    const addBtns = screen.getAllByRole("button", { name: "Add +" });
+    console.log(addBtns.length);
+    fireEvent.click(addBtns[0]);
+
+    expect(screen.getByText("Cart (1 items)")).toBeInTheDocument();
+
+    fireEvent.click(addBtns[1]);
+    expect(screen.getByText("Cart (2 items)")).toBeInTheDocument();
+
+    expect(screen.getAllByTestId("accordion-item").length).toBe(8);
+  });
+
+  it("Should clear cart and reset items", async () => {
+    await act(async () => renderWithProviders());
+
+    // Test logic for clearing cart and resetting items
+    const accordionHeader = screen.getByText("Kulcha Burger (6)");
+    fireEvent.click(accordionHeader);
+
+    const cartBtn = screen.getByRole("button", { name: "Clear Cart" });
+    fireEvent.click(cartBtn);
+
+    expect(screen.getAllByTestId("accordion-item").length).toBe(6);
+    expect(
+      screen.getByRole("button", { name: "Add to cart" })
+    ).toBeInTheDocument();
+    expect(screen.getByText("Cart (0 items)")).toBeInTheDocument();
+  });
+});
