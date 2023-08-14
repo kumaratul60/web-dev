@@ -5,17 +5,17 @@ import { Provider } from "react-redux";
 
 import "./App.css";
 
-import About from "./TailwindComponent/About/About";
-import Card from "./TailwindComponent/Card/Card";
-import Contact from "./TailwindComponent/Contact/Contact";
-import Error from "./TailwindComponent/Error/Error";
-import Header from "./TailwindComponent/Header/Header";
-import RestaurantCustomMenu from "./TailwindComponent/RestaurantMenu/RestaurantCustomMenu";
-import Cart from "./TailwindComponent/Cart";
+import About from "./components/TailwindComponent/About/About";
+import Card from "./components/TailwindComponent/Card/Card";
+import Contact from "./components/TailwindComponent/Contact/Contact";
+import Error from "./components/TailwindComponent/Error/Error";
+import Header from "./components/TailwindComponent/Header/Header";
+import RestaurantCustomMenu from "./components/TailwindComponent/RestaurantMenu/RestaurantCustomMenu";
+import Cart from "./components/TailwindComponent/Cart";
 
-const GroceryPage = lazy(() => import("./components/Grocery"));
+const GroceryPage = lazy(() => import("./components/TailwindComponent/Grocery"));
 
-import appStore from "./Redux/store";
+import appStore from "./components/Redux/store";
 import UserContext from "./utils/UserContext";
 
 const AppLayout = () => {
@@ -31,8 +31,8 @@ const AppLayout = () => {
   }, []);
 
   return (
-    <Provider store={appStore}>
-      <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
+    <Provider store={ appStore }>
+      <UserContext.Provider value={ { loggedInUser: userName, setUserName } }>
         <div className="app">
           <Header />
           <Outlet />
@@ -72,7 +72,7 @@ const appRouter = createBrowserRouter([
         path: "/grocery",
 
         element: (
-          <Suspense fallback={<h3>loading.....</h3>}>
+          <Suspense fallback={ <h3>loading.....</h3> }>
             <GroceryPage />
           </Suspense>
         ),
@@ -85,4 +85,4 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(<RouterProvider router={ appRouter } />);

@@ -11,7 +11,7 @@ describe("Header component tests", () => {
     //   Also we use Link  inside header component so we provide router context here
     render(
       <BrowserRouter>
-        <Provider store={appStore}>
+        <Provider store={ appStore }>
           <Header />
         </Provider>
       </BrowserRouter>
@@ -32,7 +32,7 @@ describe("Header component tests", () => {
   it("Should render Header component with cart button", () => {
     render(
       <BrowserRouter>
-        <Provider store={appStore}>
+        <Provider store={ appStore }>
           <Header />
         </Provider>
       </BrowserRouter>
@@ -48,7 +48,7 @@ describe("Header component tests", () => {
   it("Should change Login Button to Logout on click Header component ", () => {
     render(
       <BrowserRouter>
-        <Provider store={appStore}>
+        <Provider store={ appStore }>
           <Header />
         </Provider>
       </BrowserRouter>

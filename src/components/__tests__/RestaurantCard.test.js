@@ -2,11 +2,11 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import RestaurantCard from "../TailwindComponent/RestaurantCard/RestaurantCard";
 import { withPromotedLabel } from "../TailwindComponent/RestaurantCard/RestaurantCard";
-import MOCK_DATA from "../mocks/resCardMock.json";
-import MOCK_PROMOTED_DATA from "../mocks/resPromotedCardMock.json";
+import MOCK_DATA from "../../mocks/resCardMock.json";
+import MOCK_PROMOTED_DATA from "../../mocks/resPromotedCardMock.json";
 
 it("Should render RestaurantCard component with props data", () => {
-  render(<RestaurantCard resData={MOCK_DATA} />);
+  render(<RestaurantCard resData={ MOCK_DATA } />);
   const name = screen.getByText("Nirula's");
   //  expect(name).to.equal("Nirula's");
   expect(name).toBeInTheDocument();
@@ -17,7 +17,7 @@ describe("RestaurantCard Component", () => {
     const resData = MOCK_DATA;
 
     const { getByText, getByAltText } = render(
-      <RestaurantCard resData={resData} />
+      <RestaurantCard resData={ resData } />
     );
 
     // Test for expected content in the component
@@ -43,7 +43,7 @@ describe("withPromotedLabel Higher-Order Component", () => {
     const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
     const { getByText } = render(
-      <PromotedRestaurantCard resData={resPromoData} />
+      <PromotedRestaurantCard resData={ resPromoData } />
     );
 
     // Test for presence of promoted label and wrapped content

@@ -1,4 +1,4 @@
-import { CDN_URL } from "../../utils/constants";
+import { CDN_URL } from "../../../utils/constants";
 
 const styleColor = {
   backgroundColor: "#f0f0f0",

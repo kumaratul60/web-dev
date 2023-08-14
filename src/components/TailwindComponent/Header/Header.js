@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { HEADER_URL } from "../../utils/constants";
+import { HEADER_URL } from "../../../utils/constants";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../../hooks/useOnlineStatus";
-import UserContext from "../../utils/UserContext";
+import useOnlineStatus from "../../../hooks/useOnlineStatus";
+import UserContext from "../../../utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Header = () => {

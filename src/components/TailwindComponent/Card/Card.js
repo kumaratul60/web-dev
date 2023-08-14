@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { resList } from "../../utils/mockData";
+import { resList } from "../../../utils/mockData";
 import RestaurantCard, {
   withPromotedLabel,
 } from "../RestaurantCard/RestaurantCard";
-import { RESTRA_API } from "../../utils/constants";
+import { RESTRA_API } from "../../../utils/constants";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
-import useOnlineStatus from "../../hooks/useOnlineStatus";
-import UserContext from "../../utils/UserContext";
+import useOnlineStatus from "../../../hooks/useOnlineStatus";
+import UserContext from "../../../utils/UserContext";
 
 const Card = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);

@@ -1,12 +1,12 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 
-import About from "./TailwindComponent/About/About";
-import Card from "./TailwindComponent/Card/Card";
-import Contact from "./TailwindComponent/Contact/Contact";
-import Error from "./TailwindComponent/Error/Error";
-import Header from "./TailwindComponent/Header/Header";
-import RestaurantCustomMenu from "./TailwindComponent/RestaurantMenu/RestaurantCustomMenu";
+import About from "./components/TailwindComponent/About/About";
+import Card from "./components/TailwindComponent/Card/Card";
+import Contact from "./components/TailwindComponent/Contact/Contact";
+import Error from "./components/TailwindComponent/Error/Error";
+import Header from "./components/TailwindComponent/Header/Header";
+import RestaurantCustomMenu from "./components/TailwindComponent/RestaurantMenu/RestaurantCustomMenu";
 
 const GroceryPage = lazy(() => import("./components/Grocery"));
 
@@ -42,7 +42,7 @@ const AppLayout = () => {
     //   </div>
     // </UserContext.Provider>
 
-    <UserContext.Provider value={{ loggedInUser: userName,setUserName }}>
+    <UserContext.Provider value={ { loggedInUser: userName, setUserName } }>
       <div className="app">
         <Header />
         <Outlet />
@@ -77,7 +77,7 @@ const appRouter = createBrowserRouter([
         path: "/grocery",
 
         element: (
-          <Suspense fallback={<h3>loading.....</h3>}>
+          <Suspense fallback={ <h3>loading.....</h3> }>
             <GroceryPage />
           </Suspense>
         ),
@@ -90,4 +90,4 @@ const appRouter = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(<RouterProvider router={appRouter} />);
+root.render(<RouterProvider router={ appRouter } />);
