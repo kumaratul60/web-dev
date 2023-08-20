@@ -12,6 +12,7 @@ import Error from "./components/TailwindComponent/Error/Error";
 import Header from "./components/TailwindComponent/Header/Header";
 import RestaurantCustomMenu from "./components/TailwindComponent/RestaurantMenu/RestaurantCustomMenu";
 import Cart from "./components/TailwindComponent/Cart";
+import MemoLearn from "./components/TailwindComponent/HooksLearn/MemoLearn";
 
 const GroceryPage = lazy(() =>
   import("./components/TailwindComponent/Grocery")
@@ -19,6 +20,7 @@ const GroceryPage = lazy(() =>
 
 import appStore from "./components/Redux/store";
 import UserContext from "./utils/userContext";
+import RefLearn from "./components/TailwindComponent/HooksLearn/RefLearn";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
@@ -77,6 +79,15 @@ const appRouter = createBrowserRouter([
           <Suspense fallback={<h3>loading.....</h3>}>
             <GroceryPage />
           </Suspense>
+        ),
+      },
+      {
+        path: "/learn",
+        element: (
+          <>
+            <MemoLearn />
+            <RefLearn />
+          </>
         ),
       },
     ],

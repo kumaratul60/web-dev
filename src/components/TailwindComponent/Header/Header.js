@@ -49,6 +49,10 @@ const Header = () => {
             </Link>
           </li>
 
+          {/* <li className="text-md  hover:text-pink-600 transition-colors duration-300">
+            <Link to="/learn">Learn </Link>
+          </li> */}
+
           {/* <li>{cartData}</li> */}
 
           <button
