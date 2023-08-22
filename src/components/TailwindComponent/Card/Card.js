@@ -27,7 +27,7 @@ const Card = () => {
     const data = await fetch(RESTRA_API);
 
     const json = await data.json();
-    
+
     // console.log({ cardJSON: json });
 
     setListOfRestaurants(
@@ -36,6 +36,32 @@ const Card = () => {
     setFilteredRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+  };
+
+  const renderFilteredRestaurants = () => {
+    return listOfRestaurants
+      .filter(
+        (restaurant) =>
+          restaurant?.info?.name
+            .toLowerCase()
+            .includes(searchText.toLowerCase()) ||
+          restaurant?.info.cuisines
+            .toString()
+            .toLowerCase()
+            .includes(searchText.toLowerCase())
+      )
+      .map((restaurant) => (
+        <Link
+          key={restaurant?.info.id}
+          to={"/restaurants/" + restaurant?.info.id}
+        >
+          {restaurant?.info.veg ? (
+            <RestaurantCardPromoted resData={restaurant?.info} />
+          ) : (
+            <RestaurantCard resData={restaurant?.info} />
+          )}
+        </Link>
+      ));
   };
 
   const handleSearchRestaurants = () => {
@@ -198,7 +224,7 @@ const Card = () => {
       </div>
       <div className="flex flex-wrap justify-center mx-16 pt-6 gap-x-7 gap-y-12 border-t-[1px] border-gray-300">
         {/* Display a restaurant */}
-        {filteredRestaurants &&
+        {/* {filteredRestaurants &&
           filteredRestaurants.map((restaurant) => (
             <Link
               key={restaurant?.info.id}
@@ -210,7 +236,9 @@ const Card = () => {
                 <RestaurantCard resData={restaurant?.info} />
               )}
             </Link>
-          ))}
+          ))} */}
+
+        {renderFilteredRestaurants()}
       </div>
     </div>
   );
