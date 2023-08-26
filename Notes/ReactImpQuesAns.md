@@ -2,7 +2,7 @@
 
 A1: React hooks are functions that allow you to use state and lifecycle features in functional components. useState is used to manage state, while useEffect is used to handle side effects like fetching data or subscribing to events.
 
-```
+```javascript
 💡 Code Example:
 const [count, setCount] = useState(0);
 
@@ -16,7 +16,7 @@ useEffect(() => {
 
 A2: Context API provides a way to share data between components without passing it through props. It's useful for managing global state. You create a context using createContext and provide it at a higher level. Consumers can access the context using useContext.
 
-```
+```javascript
 🌍 Code Example:
 const ThemeContext = createContext();
 
@@ -39,7 +39,7 @@ function Component() {
 
 A3: Render props is a pattern where a component accepts a function as a prop and calls it to render content. It enables component composition and code reusability by allowing components to share their internal state or behavior with other components.
 
-```
+```javascript
 🔄 Code Example:
 function MouseTracker({ render }) {
  const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -65,7 +65,7 @@ function MouseTracker({ render }) {
 
 A4: Performance optimization techniques include memoization with useMemo and useCallback to avoid unnecessary recalculations, code splitting to split the bundle into smaller chunks, and lazy loading to load components or resources only when needed.
 
-```
+```javascript
 
 ⚡️ Code Example:
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
@@ -80,13 +80,13 @@ const handleClick = useCallback(() => {
 
 👉 Answer: React's Virtual DOM is a lightweight copy of the actual DOM. When state changes, React creates a new Virtual DOM representation and compares it with the previous one. Only the differences are updated in the real DOM, reducing the need for expensive DOM manipulations.
 
---
+--javascript
 
 6. Explain the role of keys in React lists and why they are essential.
 
 👉 Answer: Keys help React identify each list item uniquely and efficiently update and re-render components when the list changes. They improve performance by minimizing re-renders and avoiding issues like incorrect component recycling.
 
-```
+```javascript
 
 ⚡️ Code Example:
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
@@ -103,24 +103,22 @@ const handleClick = useCallback(() => {
 
 👉 Answer: Higher-order components are functions that take a component as an input and return an enhanced component with additional props or functionality. They are commonly used for code reuse, logic abstraction, and cross-cutting concerns.
 
-```
-
+```javascript
 const withLogger = (WrappedComponent) => {
-const EnhancedComponent = (props) => {
-console.log('Component props:', props);
-return <WrappedComponent {...props} />;
-};
+  const EnhancedComponent = (props) => {
+    console.log("Component props:", props);
+    return <WrappedComponent {...props} />;
+  };
 
-return EnhancedComponent;
+  return EnhancedComponent;
 };
 
 // Usage
 const MyComponent = (props) => {
-// Component logic here
+  // Component logic here
 };
 
 export default withLogger(MyComponent);
-
 ```
 
 --
@@ -129,21 +127,18 @@ export default withLogger(MyComponent);
 
 👉 Answer: React Fragments allow you to group multiple components without introducing an additional parent element in the DOM. They are useful when you need to return multiple elements from a component's render method.
 
-```
-
-import React, { Fragment } from 'react';
+```javascript
+import React, { Fragment } from "react";
 
 const MyComponent = () => {
-return (
-<Fragment>
-
-   <h1>Title</h1>
-   <p>Paragraph 1</p>
-   <p>Paragraph 2</p>
-  </Fragment>
- );
+  return (
+    <Fragment>
+      <h1>Title</h1>
+      <p>Paragraph 1</p>
+      <p>Paragraph 2</p>
+    </Fragment>
+  );
 };
-
 ```
 
 9.  What is `Props Drilling` in React? How can you avoid that?
@@ -162,27 +157,25 @@ To avoid props drilling, you can use one of the following techniques:
 
 👉 Answer: **React's Context API** provides a way to pass data through the component tree without having to pass props manually at every level. It enables efficient global state management in applications, allowing components to access and update shared data.
 
-```
-
+```javascript
 // Creating a context
 const MyContext = React.createContext();
 
 // Using the context provider
 const MyProvider = ({ children }) => {
-const [state, setState] = React.useState(initialState);
-return (
-<MyContext.Provider value={{ state, setState }}>
-{children}
-</MyContext.Provider>
-);
+  const [state, setState] = React.useState(initialState);
+  return (
+    <MyContext.Provider value={{ state, setState }}>
+      {children}
+    </MyContext.Provider>
+  );
 };
 
 // Consuming the context in a component
 const MyComponent = () => {
-const { state, setState } = React.useContext(MyContext);
-// Use state and setState here
+  const { state, setState } = React.useContext(MyContext);
+  // Use state and setState here
 };
-
 ```
 
 --
@@ -191,52 +184,45 @@ const { state, setState } = React.useContext(MyContext);
 
 👉 Answer: React Hooks are functions that enable functional components to use state and other React features without writing a class. They make it easier to reuse logic and manage component state in functional components.
 
-```
-
-import React, { useState } from 'react'; // named import
+```javascript
+import React, { useState } from "react"; // named import
 
 const Counter = () => {
-const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
-const handleIncrement = () => {
-setCount(count + 1);
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleIncrement}>Increment</button>
+    </div>
+  );
 };
-
-return (
-
- <div>
- <p>Count: {count}</p>
- <button onClick={handleIncrement}>Increment</button>
- </div>
- );
-};
-
 ```
 
 --
 
 12. What are `React's controlled and uncontrolled components`, and when should you use each?
 
-👉 Answer: **Controlled components** have their state controlled by React through props and react to user input via event handlers. Uncontrolled components store their state internally in the DOM and are controlled by the DOM itself.
+👉 Answer: **Controlled components** have their state controlled by React through props and react to user input via event handlers. **Uncontrolled components** store their state internally in the DOM and are controlled by the DOM itself.
 
-```
+- Code example of a `controlled component`:
 
-Code example of a controlled component:
-
-import React, { useState } from 'react';
+```javascript
+import React, { useState } from "react";
 
 const MyInput = () => {
-const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
-const handleChange = (event) => {
-setValue(event.target.value);
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  return <input type="text" value={value} onChange={handleChange} />;
 };
-
-return (
-<input type="text" value={value} onChange={handleChange} />
-);
-};
-
 ```
 
 13. What are different ways to call API?
@@ -251,7 +237,7 @@ use based on specific situation
 
 The fetch() method in JS is used to request to the server and load the information in the webpages. The request can be of any APIs that return the data of the format JSON or XML. This method returns a promise.
 
-```
+```javascript
 function App() {
 
 useEffect(() = {
@@ -272,7 +258,7 @@ return (
 
 It is the preferred way of fetching the data from an API as it enables us to remove our then() callbacks and return asynchronously resolved data. In the async block, we can use Await function to wait for the promise.
 
-```
+```javascript
 
 function App() {
 
@@ -298,7 +284,7 @@ return <div>Different ways to fetch Data</div>
 
 or
 
-```
+```javascript
 function App() {
 useEffect(() = {
 (async () = {
@@ -320,7 +306,7 @@ return <div>Different ways to fetch Data</div>
 
 With Axios, we can easily send asynchronous HTTP requests to REST APIs & perform create, read, update and delete operations. Axios can be imported in plain JavaScript or with any library accordingly.
 
-```
+```javascript
 function App() {
 
 useEffect(() = {
@@ -339,7 +325,7 @@ return (
 
 It is basically a React component whose name will start with “use” like useFetch. It can use one or more React hooks inside them.
 
-```
+```javascript
 const useFetch = (url) =>{
 const [isLoading, setIsLoading] = useState(false)
 const [apiData, setApiData] =  useState(null)
@@ -375,7 +361,7 @@ return { isLoading,apiData,serverError }
 Import the useFetch hook and pass the URL of the API endpoint from where you want to fetch data.
 Now Just like any React hook we can directly use our custom hook to fetch the data.
 
-```
+```javascript
 import useFetch from "./useFetch";
 
 const App = () => {
@@ -390,7 +376,7 @@ return (
 <span>Error in fetching data ... </span
 ): (
 <span>{JSON.stringify(apiData)} </span>
-})
+)})
 </div>
 )
 }
@@ -401,7 +387,7 @@ return (
 
 With this we can achieve a lot more than just fetching data. It provides support for caching and refetching, which impacts the overall user experience by preventing irregularities and ensuring our app feels faster.
 
-```
+```javascript
 import axios from 'axios'
 import { useQuery } from 'react-query'
 
@@ -421,21 +407,18 @@ return <div>Different ways to fetch data</div>
 
 👉 Answer: Code splitting involves breaking your application into smaller chunks (bundling) and loading them on demand. React.lazy and Suspense are used to achieve code splitting, which can significantly reduce the initial loading time of your application.
 
-```
-Code example using React.lazy and Suspense:
+```javascript
+import React, { lazy, Suspense } from "react";
 
-import React, { lazy, Suspense } from 'react';
-
-const LazyComponent = lazy(() => import('./LazyComponent'));
+const LazyComponent = lazy(() => import("./LazyComponent"));
 
 const App = () => {
- return (
-  <Suspense fallback={<div>Loading...</div>}>
-   <LazyComponent />
-  </Suspense>
- );
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
 };
-
 ```
 
 --
@@ -444,8 +427,8 @@ const App = () => {
 
 👉 Answer: The useEffect hook allows you to perform side effects in functional components. You can use it to handle tasks like data fetching, subscriptions, or manually changing the DOM.
 
-```
-Code example:
+```javascript
+
 import React, { useEffect, useState } from 'react';
 
 const MyComponent = () => {
@@ -469,30 +452,51 @@ const MyComponent = () => {
 
 👉 Answer: You can manage form data using controlled components, where form elements are bound to state and updated through event handlers.
 
-```
-Code example of a controlled input:
-import React, { useState } from 'react';
+- Code example of a controlled input:
+
+```javascript
+import React, { useState } from "react";
 
 const MyForm = () => {
- const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
- const handleChange = (event) => {
-  setInputValue(event.target.value);
- };
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
 
- const handleSubmit = (event) => {
-  event.preventDefault();
-  // Handle form submission with 'inputValue'
- };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission with 'inputValue'
+  };
 
- return (
-  <form onSubmit={handleSubmit}>
-   <input type="text" value={inputValue} onChange={handleChange} />
-   <button type="submit">Submit</button>
-  </form>
- );
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" value={inputValue} onChange={handleChange} />
+      <button type="submit">Submit</button>
+    </form>
+  );
 };
-
 ```
 
---
+17. 🎆 Difference between Real DOM and Virtual DOM
+
+🌕 Real DOM
+
+- DOM manipulation is very expensive
+- There is too much memory wastage
+- It updates Slow
+- It can directly update HTML
+- Creates a new DOM if the element updates.
+- It allows us to directly target any specific node
+  (HTML element)
+- It represents the Ul of your application
+
+🌕 Virtual DOM
+
+- DOM manipulation is very easy
+- No memory wastage
+- It updates fast
+- It can’t update HTML directly
+- Update the JSX if the element update
+- It can produce about ~200,000 Virtual DOM Nodes / Second.
+- It is only a virtual representation of the DOM
