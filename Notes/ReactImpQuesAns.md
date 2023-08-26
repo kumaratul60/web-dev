@@ -478,9 +478,9 @@ const MyForm = () => {
 };
 ```
 
-17. 🎆 Difference between Real DOM and Virtual DOM
+17. 🎆 **Difference between Real DOM and Virtual DOM**
 
-🌕 Real DOM
+🌕 **Real DOM**
 
 - DOM manipulation is very expensive
 - There is too much memory wastage
@@ -491,7 +491,7 @@ const MyForm = () => {
   (HTML element)
 - It represents the Ul of your application
 
-🌕 Virtual DOM
+🌕 **Virtual DOM**
 
 - DOM manipulation is very easy
 - No memory wastage
@@ -500,3 +500,5 @@ const MyForm = () => {
 - Update the JSX if the element update
 - It can produce about ~200,000 Virtual DOM Nodes / Second.
 - It is only a virtual representation of the DOM
+
+## [know more about DOM & Virtual-DOM, BOM, CSSOM](https://atulkawasthi.medium.com/what-is-the-dom-virtual-dom-afea2de36a00)
