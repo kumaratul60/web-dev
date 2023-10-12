@@ -12,7 +12,7 @@ const GroceryPage = lazy(() => import("./components/Grocery"));
 
 import "./App.css";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
-import UserContext from "./utils/UserContext";
+import UserContext from "./utils/userContext";
 
 const AppLayout = () => {
   const [userName, setUserName] = useState();
