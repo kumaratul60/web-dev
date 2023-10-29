@@ -3,9 +3,11 @@
 DO NOT go to Interview without preparing for them !!
 
 1. How does React Fiber improve performance in React applications?
+
    => React Fiber is the new reconciler/renderer layer introduced in React 16. It rewrites the fundamental algorithm used to reconcile DOM elements and virtual DOM nodes in React. Fiber allows splitting rendering work into chunks using fibers which makes rendering incremental.
 
 2. Explain the concept of code splitting and its benefits in React.
+
    => Code splitting involves breaking your application into smaller chunks (bundling) and loading them on demand. This can significantly improve the initial load time of your application. Code splitting is achieved using React.lazy and Suspense. The key benefits are:
 
 - It improves the initial load time of the app since the app loads faster by splitting code bundles.
@@ -22,10 +24,12 @@ DO NOT go to Interview without preparing for them !!
 - With server side rendering, subsequent navigations are slower than client side rendering because the server has to generate the HTML on every request rather than the client generating it instantly.
 
 4. Describe the concept of render props and its use cases in React.
+
    Render props is a technique for sharing code between React components using a prop whose value is a function. It is also called a "children as a function" component.
    A common use case is to create reusable components that abstract common patterns and behaviors behind an API.
 
 5. How can you optimize the rendering of large lists in React?
+
    Some techniques to optimize rendering of large lists in React include:
 
 - Using the key prop on list items to help React identify which items have changed, been added or removed. This avoids unnecessary re-renders.
@@ -36,30 +40,38 @@ import { FixedSizeList } from "react-window";
 ```
 
 6. Explain the concept of memoization and its importance in React.
+
    Memoization is an optimization technique used primarily to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
    Memoization is important in React because it helps prevent expensive re-renders by returning cached values when the inputs haven't changed. This can improve performance in React applications, especially for pure components that are expensive to re-render unnecessarily.
 
 7. What is the purpose of the useEffect() hook in React and how does it work?
+
    The useEffect hook allows you to perform side effects in your components. It works similarly to componentDidMount, componentDidUpdate and componentWillUnmount combined.
 
 8. How does React handle routing and navigation?
+
    React handles routing and navigation using third-party libraries like React Router. React Router allows you to map routes to your React components and handle navigation between views in a React application.
    `import { BrowserRouter as Router, Routes, Route,Link, useNavigation } from 'react-router-dom';`
 
 9. How can you handle asynchronous operations in React using async/await?
+
    You can handle asynchronous operations in React using async/await which makes asynchronous code look synchronous.
 
 10. Explain the concept of the Context API in React and its benefits?
+
     The Context API is a way to share values like state, functions between components without having to explicitly pass props down through multiple levels of the component tree. It allows components to access data stored in the context from anywhere within the component tree without passing props.
 
 11. What is the role of higher-order components (HOC) in React and how can you implement them?
+
     Higher-order components (HOCs) are a pattern in React for reusing component logic. HOCs are functions that take a component as an argument and return a new component.
     A HOC accepts a component and returns a new component with additional functionality.
 
 12. Describe the concept of controlled and uncontrolled components in React forms.
+
     Controlled components are form elements whose values are controlled by React components using state. For example, a text input whose value is stored in state. Uncontrolled components are form elements whose values are not controlled by React components.
 
 13. How does React handle state management in large-scale applications?
+
     React supports several patterns for state management in large applications:
 
 - React Context API: Allows passing data through the component tree without having to pass props down manually at every level. Useful for global state that needs to be accessed throughout the app.
@@ -68,6 +80,7 @@ import { FixedSizeList } from "react-window";
 - React Query: A library for fetching, caching and updating asynchronous data in React applications. Handles caching, refetching on interval and updating UI as data changes.
 
 14. Explain the concept of suspense in React and its use cases.
+
     Suspense in React allows components to specify that they need something before they can render. This allows React to render a loading state until the needed data is available. Some common use cases include:
 
 - Data fetching: A component can specify that it needs data from an asynchronous API call before rendering. This prevents the component from rendering until the data is available.
@@ -77,9 +90,11 @@ import { FixedSizeList } from "react-window";
 15. What are the different ways to handle side effects in React using hooks?
 
 16. Explain the concept of reconciliation in React.
+
     Reconciliation is the process React uses to sync the UI with the data. When the component re-renders, React compares the new element tree with the previous one and determines the minimum set of operations needed to transform one tree into another to bring.
 
 17. How can you prevent unnecessary re-renders in React?
+
     Some ways to prevent unnecessary re-renders in React include:
 
 - Using React.memo on function components to prevent re-rendering if props haven't changed
@@ -87,6 +102,7 @@ import { FixedSizeList } from "react-window";
 - Implementing useMemo hook to memoize expensive calculations
 
 18. What are the different ways to style components in React?
+
     The main ways to style components in React are:
 
 - Inline styles: Passing a style object to the style prop.
@@ -96,6 +112,7 @@ import { FixedSizeList } from "react-window";
 - CSS Frameworks (e.g., Tailwind CSS)
 
 19. What are the key considerations when implementing a scalable React application?
+
     Some key considerations include:
 
 - Code modularity through separation of concerns and single responsibility components
@@ -133,6 +150,9 @@ React components should be designed to be modular, reusable and testable. This c
 - Avoiding reliance on the actual DOM by mocking render output.
 
 21. What is Lifting State Up in React?
+
+Lifting state up refers to the process of moving shared state from child components to their parent component so it can be passed down as props instead of trying to manage it locally in multiple child components.
+
     Lifting state up in React refers to the process of moving shared state to the closest common parent of the components that need it, instead of maintaining it in their individual components. This prevents passing props down through multiple levels of components and makes the components.
 
 Lifting state means moving shared state higher in the tree. It's done by passing down callback functions via props instead of sharing state directly.
@@ -158,15 +178,18 @@ Some key benefits of lifting state up include:
 - Lifting state up improves performance by avoiding unnecessary prop drilling and re-renders of child components when the shared state is updated in the parent.
 
 22. What is React context?
+
     React context provides a way to pass data through the component tree without having to pass props down manually at every level. It allows certain data like authenticated user, theme, or preferred language to be accessed by any component in the tree without passing props
     Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
 
 23. What are different ways to add CSS in your app?
 
 24. What is Hot Module Replacement?
+
     Hot Module Replacement (HMR) is a webpack feature that allows reloading modules during development without full page refreshes. It allows for faster development workflows by only updating changed modules instead of the entire page.
 
 25. What is the use of Parcel, Vite, Webpack?
+
     Parcel is a bundler for modern front end applications. It has no configuration and works with a wide range of languages out of the box. Parcel aims to have zero configuration and handle a variety of use cases automatically.
     Vite is another bundler for modern front-end development. It is built on top of Rollup and aims to provide better developer experience and build performance compared to tools like webpack. Some key features of Vite include:
 
@@ -179,60 +202,76 @@ Some key benefits of lifting state up include:
 - create-react-app handles all the configuration and setup so developers can focus on writing code rather than setting up build tools. It abstracts away complexity and provides a standardized build setup that works across different projects.
 
 27. What is Tree Shaking?
+
     Tree shaking is a form of dead code elimination. It refers to the ability that modern bundlers have to analyze import and export statements to determine unused code.
 
 28. Difference b/w dependency and devDependency?
+
     Dependency is a package that your application requires to execute, while devDependency is a package that is only needed during development and testing. Dependencies will be installed and included in production builds, while devDependencies will only be installed during development and excluded from production.
 
 29. What is npx and npm?
+
     npx is a package runner tool that comes bundled with npm. It allows you to run npm packages without needing to install them globally.
     npx calls npm to install and run a package script. npm is the package manager for JavaScript and the npm registry is where JavaScript packages are published and installed from.
 
 30. Difference b/w package .json and package-lock .json
+
     The package.json file describes the project and defines dependencies. The package-lock.json file is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. It describes the exact tree that was generated.
 
 31. Difference between console.log(<HeaderComponent/>) and console.log(HeaderComponent());
+
     console.log(<HeaderComponent/>) logs the JSX element to the console without rendering it.
     console.log(HeaderComponent()) calls the component function to render it and logs the rendered output.
 
 32. What is React.Fragment?
+
     React.Fragment allows grouping a list of children without adding extra nodes to the DOM. It is used as a replacement for unnecessary divs in the rendered output.
     React.Fragment wraps the children without adding extra nodes to the DOM.
 
 33. What is the purpose of dependency array in useEffect? What is the difference when it is used and when it is not used?
+
     => The purpose of the dependency array in useEffect is to specify which values need to trigger a re-render of the effect. If the dependency array is omitted, the effect will only run after the first render.
 
 34. What if 2 components are given will the state change in one component will effect the other component’s state (child)?
+
     => The state change in one component will not directly affect the state of another component. In React, state is local to each component and the parent component must pass the state value down as a prop to the child component to share state between them.
 
 35. What is the use of return in useEffect?
 
 36. Difference b/w client-side routing and server-side routing?
+
     => Client-side routing happens entirely on the frontend using JavaScript. Each route change happens without talking to the server, allowing for faster navigation. Server-side routing happens on every route change by making requests to the server which returns the full HTML page.
 
 37. Explain the concept of code splitting and its benefits in React?
 
 38. How does React handle routing and navigation?
+
     => React provides a declarative, component-based approach to routing. The core library is called React Router, which provides <Routes>, <Route>, and <Link> components to declaratively map routes to components. Navigation works by changing the URL.
 
 39. What are higher-order components (HOC) in React?
+
     => Higher-order components (HOC) are a pattern in React for reusing component logic. HOCs are functions that take a component as an argument and return a new component. HOCs are common for cross-cutting concerns like authentication.
 
 40. What are controlled and uncontrolled components?
+
     => Controlled components are form inputs whose values are controlled by React, while uncontrolled components are form inputs whose values are handled by the DOM itself. Controlled components are usually preferable in React because they allow you to move form state into component state.
 
 41. Explain the concept of reconciliation in React?
 
 42. How do you prevent unnecessary renders in React?
+
     => Reconciliation is React's process of figuring out how to efficiently update the UI to match the most recent tree of React elements. In reconciliation, React compares the new element tree with the previous one and determines the minimal set of operations to transform.
 
 43. What is the difference between a stateful and stateless component ?
+
     A stateful component is a component that manages its own internal state data. It can change its state over time in response to user actions, network responses, etc. A stateless component is a component that does not manage or track any internal state.
 
 44. Explain how you can use context API with hooks?
+
     The Context API allows components to pass data through the component tree without having to pass props down manually at every level.
 
 45. How do you prevent default events such as form submission or link click in react?
+
     You can prevent default events in React by calling event.preventDefault() on the event object passed to the event handler.
 
 Good luck for your React Interviews! 💪🚀
