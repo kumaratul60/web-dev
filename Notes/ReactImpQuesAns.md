@@ -207,7 +207,27 @@ const Counter = () => {
 
 12. What are `React's controlled and uncontrolled components`, and when should you use each?
 
-👉 Answer: **Controlled components** have their state controlled by React through props and react to user input via event handlers. **Uncontrolled components** store their state internally in the DOM and are controlled by the DOM itself.
+👉 Answer: **Controlled components** have their state controlled by React through props and react to user input via event handlers.
+**Uncontrolled components** store their state internally in the DOM and are controlled by the DOM itself.
+The key difference between controlled and uncontrolled components in React is whether the form data is handled by React component state or by the DOM itself.
+
+**Some key differences**:
+
+- When to use controlled components:
+
+  - Use controlled components when you need to have more control over the form elements and their behavior.
+  - Useful when you want to perform validation or manipulate the input before updating the state.
+  - Controlled components are usually preferred for forms because they allow controlling and validating user input.
+  - Use controlled components when you need to control input validation and state changes. This is common for forms.
+
+- When to use uncontrolled components:
+
+  - Uncontrolled components can be useful when integrating React with non-React code or when you want to avoid unnecessary re-rendering.
+  - They might be suitable for simple scenarios where you don't need to perform extensive validation or manipulation on the input.
+
+  - Uncontrolled components are useful when you don't need to control input state or validation. For example, for file inputs or textarea inputs where it's not necessary to control every keystroke.
+  - Use uncontrolled components when you don't need to control every state change and it's simpler not to deal with synthetic events, e.g. for file inputs.
+  - Use uncontrolled components in scenarios where you prefer to let the DOM handle the form element's state, and you need to integrate with non-React code more seamlessly.
 
 - Code example of a `controlled component`:
 
@@ -222,6 +242,25 @@ const MyInput = () => {
   };
 
   return <input type="text" value={value} onChange={handleChange} />;
+};
+```
+
+```jsx
+import React, { useRef } from "react";
+
+const UncontrolledComponent = () => {
+  const inputRef = useRef();
+
+  const handleClick = () => {
+    alert(`Input value: ${inputRef.current.value}`);
+  };
+
+  return (
+    <div>
+      <input type="text" ref={inputRef} />
+      <button onClick={handleClick}>Get Value</button>
+    </div>
+  );
 };
 ```
 
