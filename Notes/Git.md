@@ -1,4 +1,4 @@
-# Bash Command Documentation: From Basics to Advanced
+# GIT Command Documentation: From Basics to Advanced
 
 This document provides a comprehensive guide to common bash commands, ranging from basic navigation to advanced development tools. It is structured to be accessible to beginners while also providing depth for experienced users.
 
