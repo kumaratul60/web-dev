@@ -164,11 +164,7 @@ const MyContext = React.createContext();
 // Using the context provider
 const MyProvider = ({ children }) => {
   const [state, setState] = React.useState(initialState);
-  return (
-    <MyContext.Provider value={{ state, setState }}>
-      {children}
-    </MyContext.Provider>
-  );
+  return <MyContext.Provider value={{ state, setState }}>{children}</MyContext.Provider>;
 };
 
 // Consuming the context in a component
@@ -404,7 +400,7 @@ Now Just like any React hook we can directly use our custom hook to fetch the da
 import useFetch from "./useFetch";
 
 const App = () => {
-const { islLoading, serverError, apiData } = useFetch('https://site.com"')
+const { islLoading, serverError, apiData } = useFetch('https://site.com')
 
 return (
 
