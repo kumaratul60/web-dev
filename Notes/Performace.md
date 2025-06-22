@@ -3,6 +3,7 @@
 Google's **Core Web Vitals (CWV)** are essential metrics for **SEO rankings** and **user experience**. Below are the four primary CWV metrics along with their **ideal thresholds**.
 
 ---
+ - Avoid Premature optimization (useMemo, useCallback)
 
 ## ✅ 1. Largest Contentful Paint (LCP)
 
