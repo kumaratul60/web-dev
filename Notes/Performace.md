@@ -306,6 +306,149 @@ const prefetchOnHover = (path) => {
   };
 };
 ```
+___
+
+### 13: What is the key difference between INP (Interaction to Next Paint) and the deprecated FID (First Input Delay)?
+
+**A:**
+*   **FID (Deprecated):** Only measured the **input delay** (the time from when the user clicks to when the event handler begins). It ignored the time taken to run the event handler and paint the result.
+*   **INP (Current Standard):** Measures the **full interaction latency** which includes **Input Delay** + **Processing Time** + **Presentation Delay**. It looks at the longest interactions throughout the entire page lifecycle, not just the first one.
+*   *Note: INP replaced FID as a Core Web Vital on March 12, 2024.*
+
+---
+
+### 14: Which code splitting approach loads JavaScript bundles only when the user navigates to a specific page?
+
+**A:**
+**Route-based code splitting.**
+This relies on routing libraries (like React Router) combined with `React.lazy()` and dynamic `import()`. The code for a specific route is separated into its own chunk and is only fetched by the browser when the user navigates to that URL.
+
+---
+
+### 15: What are other common chunking/splitting methods and their specific use cases?
+
+**A:**
+Apart from Route-based splitting, these are the standard methods:
+
+1.  **Component-based Splitting**
+    *   **Use Case:** Heavy UI elements that are not visible immediately (e.g., a complex Modal, a heavy Map component, or a Drawer).
+    *   **Benefit:** Keeps the initial bundle small by loading these components only **on interaction** (when the user clicks to open them).
+2.  **Vendor Splitting**
+    *   **Use Case:** Separating `node_modules` (React, Lodash, etc.) from application code.
+    *   **Benefit:** **Long-term Caching**. Vendor libraries change rarely compared to app code. The browser can cache the heavy vendor chunk while only re-downloading the small app chunk when you push updates.
+3.  **Server Components (RSC)**
+    *   **Use Case:** Static content or non-interactive UI (Next.js/Remix).
+    *   **Benefit:** **Zero-Bundle Size**. The HTML is generated on the server, and no JavaScript for those components is sent to the client.
+
+---
+
+### 16: According to WCAG 2.2 criterion 2.5.8 (Target Size Minimum, Level AA), what is the minimum required size for interactive targets?
+
+**A:**
+**24x24 CSS pixels.**
+WCAG 2.2 Level AA requires a minimum target size (or spacing) of 24x24 pixels.
+*   *Note:* While 24x24 is the strict compliance minimum, **44x44 pixels** is recommended by Apple’s Human Interface Guidelines and WCAG Level AAA for better usability on touch devices.
+
+---
+
+### 17: What is the correct approach to focus management when a modal dialog opens?
+
+**A:**
+To ensure accessibility for keyboard users, you must implement a **Focus Trap**:
+1.  **Move Focus:** Immediately shift focus to the first focusable element (or the container) inside the modal upon opening.
+2.  **Trap Focus:** Prevent the `Tab` key from moving focus to elements behind/outside the modal.
+3.  **Close on Escape:** Listen for the `Escape` key to close the modal.
+4.  **Restore Focus:** When the modal closes, return focus to the element that triggered it (the button the user originally clicked).
+
+---
+
+### 18: What are the 'Good' thresholds for LCP and other Core Web Vitals?
+
+**A:**
+The "Good" thresholds (green scores) for the three Core Web Vitals are:
+
+*   **LCP (Largest Contentful Paint):** **≤ 2.5 seconds**
+    *(Loading Speed)*
+*   **INP (Interaction to Next Paint):** **≤ 200 milliseconds**
+    *(Responsiveness)*
+*   **CLS (Cumulative Layout Shift):** **≤ 0.1**
+    *(Visual Stability)*
+
+---
+
+### 19: When does using `useMemo` HURT performance instead of helping?
+
+**A:**
+`useMemo` incurs overhead (memory allocation + dependency comparison checks). It hurts performance when used for:
+1.  **Trivial Computations:** Simple string concatenation or basic arithmetic costs less to recalculate than the overhead of `useMemo`.
+2.  **Primitive Props:** Using it on values where reference equality doesn't matter.
+
+**Correct Usage:** Only use it for genuinely expensive calculations (e.g., filtering large datasets) or when passing objects/arrays to child components wrapped in `React.memo` to preserve referential equality.
+---
+
+
+### 20: What is the difference between `useTransition` and `useDeferredValue` in React?
+
+**A:**
+Both hooks deal with non-urgent UI updates (concurrent rendering), but they tackle different problems:
+*   **`useTransition`:** Wraps **state updates** that are slow/blocking (e.g., clicking a filter button that triggers a heavy list re-render). It tells React, "Update this state now, but don't block the UI if rendering the next screen takes time."
+*   **`useDeferredValue`:** Wraps a **value** coming from props or state. It tells React, "Use the old version of this value for now if the new one takes too long to render." This is useful when you receive new data from a parent but can't control the state update itself.
+
+---
+
+### 21: What is the CSS `content-visibility` property, and how does it improve performance?
+
+**A:**
+`content-visibility: auto` allows the browser to skip rendering, layout, and painting for an element's subtree until it approaches the viewport (is scrolled into view).
+*   **Benefit:** significantly reduces **Initial Load Time** and **Main Thread work** for long pages with complex DOM structures.
+*   **Caveat:** You should typically pair it with `contain-intrinsic-size` to give the browser a placeholder height estimate, preventing scrollbar jumping (layout shifts) as content loads.
+
+---
+
+### 22: When should you use `<link rel="preload">` versus `<link rel="prefetch">`?
+
+**A:**
+*   **`preload`:** Used for critical resources needed for the **current** page immediately (e.g., the hero image, critical fonts, or the main JS bundle). It forces the browser to download it with high priority.
+*   **`prefetch`:** Used for resources needed for the **next** navigation (e.g., the JS bundle for the "Settings" page the user is likely to click next). It downloads with low priority during idle time.
+
+---
+
+### 23: What causes Cumulative Layout Shift (CLS), and what are the standard fixes?
+
+**A:**
+CLS happens when visible elements change position unexpectedly.
+**Common Causes & Fixes:**
+1.  **Images without dimensions:** Always add `width` and `height` attributes (or CSS aspect-ratio) to reserve space before the image loads.
+2.  **Web Fonts (FOIT/FOUT):** Text pops in or changes style late. Fix by using `<link rel="preload">` for fonts or `font-display: swap` (though `swap` can still cause minor shifts, it fixes the invisible text issue).
+3.  **Late-loading Ads/Embeds:** Reserve a static `min-height` container for dynamic content so the layout doesn't jump when the ad loads.
+
+---
+
+### 24: How do "Skip to Content" links improve accessibility?
+
+**A:**
+A "Skip to Content" link is a hidden anchor (usually the very first element in the DOM) that becomes visible when focused via keyboard.
+*   **Purpose:** It allows keyboard and screen reader users to bypass repetitive navigation menus (header, sidebar) and jump directly to the main content area (`<main>`).
+*   **Requirement:** Without it, keyboard users must press `Tab` dozens of times on every new page just to reach the article or form they want to use.
+
+---
+
+### 25: What are "ARIA Live Regions" (`aria-live`), and when are they required?
+
+**A:**
+ARIA live regions tell screen readers to announce dynamic content changes without the user moving their focus.
+*   **`aria-live="polite"`:** The screen reader waits until the user stops interacting/typing to announce the update (e.g., "Search results updated"). **Use this most of the time.**
+*   **`aria-live="assertive"`:** The screen reader interrupts whatever it is saying to announce the update immediately (e.g., "Form submission failed," "Server error"). **Use sparingly.**
+
+---
+
+### 26: In React, why is "Component Composition" often better than `Context` or `Props Drilling` for performance?
+
+**A:**
+Component Composition (passing components as `children` or props) prevents unnecessary re-renders.
+*   **The Problem:** If you have a stateful `Parent` wrapper, typically *everything* inside it re-renders when state changes.
+*   **The Solution:** If you pass the expensive child components down as `children` (e.g., `<Parent><ExpensiveChild /></Parent>`), React knows `ExpensiveChild` hasn't changed (it's just a prop), so it **skips re-rendering** it, even when `Parent` updates its own state.
+
 ---
 
 ## 📊 How to Measure Core Web Vitals?
@@ -316,8 +459,6 @@ const prefetchOnHover = (path) => {
 4. **Google Search Console** (Core Web Vitals Report)
 
 ---
-
-### 📌 Want to Optimize Further?
 
 Check out these tools:
 
