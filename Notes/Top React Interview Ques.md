@@ -405,6 +405,68 @@ Here are some key principles and examples of web accessibility:
 
 10. **Testing with Assistive Technologies:**
     - Principle: Regularly test your web content with screen readers and other assistive technologies to identify and fix accessibility issues.
+   
+11. Here is the `README.md` formatted Q&A based on the specific points you provided, polished for clarity.
+
+
+___
+
+
+### Q: What is the difference between `useTransition` and `useDeferredValue`?
+
+**A:**
+The main difference lies in **what** they wrap:
+*   **`useTransition`:** Wraps the **state setter** (the update itself). It allows you to tell React, "This specific state update is low priority."
+*   **`useDeferredValue`:** Wraps a **value**. It allows the consuming component to say, "If the new value takes too long to render, keep showing the old value for a bit."
+
+---
+
+### Q: What happens to Server Component code in the browser's JavaScript bundle?
+
+**A:**
+**It is never sent to the browser.**
+Server Component code executes exclusively on the server. The server sends only the rendered output (HTML/JSON-like structure) to the client, not the component's JavaScript logic. This significantly reduces the bundle size and improves performance.
+
+---
+
+### Q: Which state management solution is best for frequently updating shared client state with a simple API?
+
+**A:**
+**Zustand.**
+*   **Why Zustand?** It is a lightweight external store optimized for frequent updates without triggering unnecessary re-renders in unrelated components.
+*   **Why not others?**
+    *   **React Context:** Causes *all* consumers to re-render whenever the context value changes, which hurts performance with frequent updates.
+    *   **TanStack Query:** Is designed specifically for *server* state (async data fetching), not client state.
+    *   **Redux Toolkit:** While powerful, it is often heavier and has more boilerplate than needed for simple shared state.
+
+---
+
+### Q: What is the default component type in the Next.js App Router?
+
+**A:**
+In the App Router, all components are **Server Components by default**.
+To make a component interactive (use hooks, event listeners), you must explicitly add the `'use client'` directive at the top of the file to convert it into a Client Component.
+
+---
+
+### Q: What is the main risk of using an empty dependency array `[]` with `useEffect` when the effect references state variables?
+
+**A:**
+**Stale Closures.**
+If you use `[]`, the effect runs only once on mount. If that effect references a state variable (e.g., `count`), it captures the initial value of that variable and **never sees updates**. Inside the effect, `count` will always remain at its initial value (e.g., `0`), leading to bugs where the logic relies on outdated data.
+
+---
+
+### Q: What key improvement did React Fiber architecture introduce over the previous reconciliation algorithm?
+
+**A:**
+**Interruptible Rendering.**
+Fiber replaced the old recursive, synchronous "Stack" reconciliation with a **linked-list structure**. This allows React to:
+1.  **Pause** work to check for higher-priority tasks.
+2.  **Abort** work if it's no longer needed.
+3.  **Prioritize** urgent updates (like user typing) over background work (like data fetching or rendering hidden content), making the UI feel smoother.
+
+__
 
 Web accessibility is crucial for making the web more inclusive and ensuring that people with disabilities can access and use web content and applications effectively. By following accessibility guidelines and principles, web developers can create a more accessible and user-friendly online experience for everyone.
 
