@@ -468,6 +468,35 @@ Fiber replaced the old recursive, synchronous "Stack" reconciliation with a **li
 
 __
 
+### Q: What is the main advantage of the compound component pattern over a single component with many props?
+
+**A:**
+Compound components let consumers compose only the parts they need and insert custom elements between them. Each sub-component has a focused API, making the library flexible without prop explosion. State is shared internally through React Context.
+
+___
+
+### Q: When should you choose WebSocket over Server-Sent Events (SSE) for real-time updates?
+
+**A:**
+WebSocket provides full-duplex (bidirectional) communication, making it necessary for chat applications and collaborative editing where both client and server send messages. SSE is one-way (server to client only) and is simpler for notifications and feeds.
+
+___
+
+### Q: In a large-scale application, where should frequently changing shared client state (like a shopping cart) live?
+
+**A:**
+Frequently updating shared client state should live in a lightweight external store like Zustand. React Context re-renders all consumers on any change, server state tools are designed for fetched data, and URL state is for shareable navigation state.
+
+___
+
+### Q: What does the 'D' in the RADIO framework stand for, and what does it address?
+
+**A:**
+D stands for Data Model. This step defines the shape of your application state, where each piece of state lives (server cache, client store, URL params, component state), and how data flows between components.
+[Radio](https://atulkawasthi.medium.com/from-junior-to-senior-how-radio-changed-the-way-i-answer-system-design-questions-4ba342504688)
+
+___
+
 Web accessibility is crucial for making the web more inclusive and ensuring that people with disabilities can access and use web content and applications effectively. By following accessibility guidelines and principles, web developers can create a more accessible and user-friendly online experience for everyone.
 
 Good luck for your React Interviews! 💪🚀
